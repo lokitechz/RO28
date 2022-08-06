@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS Testing_System_Assignment_3;
-CREATE DATABASE Testing_System_Assignment_3;
+DROP DATABASE IF EXISTS Testing_System_Assignment_1;
+CREATE DATABASE Testing_System_Assignment_1 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-USE Testing_System_Assignment_3;
+USE Testing_System_Assignment_1;
 
 DROP TABLE IF EXISTS `Department`;
 CREATE TABLE `Department`(
@@ -191,14 +191,14 @@ VALUES 	('Câu hỏi về Java' , 1 ,'1' , '2' ,'2020-04-05'),
 INSERT INTO Answer(Content , QuestionID , isCorrect)
 VALUES 	('Trả lời 01' , 1 , 0),
 		('Trả lời 02' , 1 , 1),
-		('Trả lời 03', 1 , 0 ),
-		('Trả lời 04', 1 , 1 ),
-		('Trả lời 05', 2 , 1 ),
-		('Trả lời 06', 3 , 1 ),
-		('Trả lời 07', 4 , 0 ),
-		('Trả lời 08', 8 , 0 ),
-		('Trả lời 09', 9 , 1 ),
-		('Trả lời 10', 10 , 1 );
+		('Trả lời 03', 1 , 0),
+		('Trả lời 04', 1 , 1),
+		('Trả lời 05', 2 , 1),
+		('Trả lời 06', 3 , 1),
+		('Trả lời 07', 4 , 0),
+		('Trả lời 08', 8 , 0),
+		('Trả lời 09', 9 , 1),
+		('Trả lời 10', 10 , 1);
 
 INSERT INTO Exam (`Code` , Title , CategoryID, Duration , CreatorID , CreateDate )
 VALUES 	('VTIQ001' , 'Đề thi C#' ,1 , 60 , '5' ,'2019-04-05'),
