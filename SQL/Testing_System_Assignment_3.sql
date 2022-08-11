@@ -30,6 +30,7 @@ SELECT * FROM `CTE_DEP3`
 WHERE LENGTH(Fullname) = (SELECT MAX(LENGTH(Fullname)) FROM `CTE_DEP3`)
 ORDER BY Fullname;
 
+
 -- Câu 6: Lấy ra tên group đã tạo trước ngày 20/12/2019
 SELECT 
     GroupName,
