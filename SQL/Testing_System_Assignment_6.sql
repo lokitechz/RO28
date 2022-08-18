@@ -71,3 +71,16 @@ CALL sp_GetCountQuesFromType(@typeQuestionID);
 -- Lấy giá trị của output
 SELECT @typeQuestionID;
 
+-- Câu 6:
+DROP PROCEDURE IF EXISTS sp_getNameAccOrNameGroup;
+DELIMITER $$
+	CREATE PROCEDURE sp_getNameAccOrNameGroup(IN input VARCHAR(50))
+	BEGIN
+	SELECT g.GroupName FROM `group` g WHERE g.GroupName LIKE CONCAT("%",input,"%")
+	UNION
+	SELECT a.Username FROM `account` a WHERE a.Username LIKE CONCAT("%",input,"%");
+	END$$
+DELIMITER ;
+
+CALL sp_getNameAccOrNameGroup('s');
+
