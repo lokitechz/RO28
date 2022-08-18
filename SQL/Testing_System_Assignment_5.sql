@@ -70,7 +70,7 @@ SELECT * FROM V_MaxNV;
 -- Câu 5: Tạo view có chứa tất các các câu hỏi do user họ Nguyễn tạo
 CREATE OR REPLACE VIEW V_QuestionCreateByNguyen AS
 SELECT Q.QuestionID, Q.Content, A.FullName AS Creator FROM question Q
-INNER JOIN `account` A ON A.AccountID = Q.CreatorID
+INNER JOIN `Account` A ON A.AccountID = Q.CreatorID
 WHERE SUBSTRING_INDEX( A.FullName, ' ', 1 ) = 'Nguyễn';
 
 SELECT * FROM V_QuestionCreateByNguyen;
