@@ -6,7 +6,7 @@ USE Testing_System_Assignment_1;
 DROP TABLE IF EXISTS `Department`;
 CREATE TABLE `Department`(
 	DepartmentID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-	DepartmentName NVARCHAR(30) NOT NULL UNIQUE KEY
+	DepartmentName VARCHAR(30) NOT NULL UNIQUE KEY
 );
 
 DROP TABLE IF EXISTS Position;
@@ -20,7 +20,7 @@ CREATE TABLE `Account`(
 	AccountID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	Email VARCHAR(50) NOT NULL UNIQUE KEY,
 	Username VARCHAR(50) NOT NULL UNIQUE KEY,
-	FullName NVARCHAR(50) NOT NULL,
+	FullName VARCHAR(50) NOT NULL,
 	DepartmentID TINYINT UNSIGNED NOT NULL,
 	PositionID TINYINT UNSIGNED NOT NULL,
 	CreateDate DATETIME DEFAULT NOW(),
@@ -37,23 +37,23 @@ CREATE TABLE `Group`(
 	FOREIGN KEY(CreatorID) REFERENCES `Account`(AccountID)
 );
 
-DROP TABLE IF EXISTS GroupAccount;
-CREATE TABLE GroupAccount(
+DROP TABLE IF EXISTS `GroupAccount`;
+CREATE TABLE `GroupAccount`(
 	GroupID TINYINT UNSIGNED NOT NULL,
 	AccountID TINYINT UNSIGNED NOT NULL,
 	JoinDate DATETIME DEFAULT NOW(),
-	PRIMARY KEY (GroupID,AccountID),
+	PRIMARY KEY(GroupID,AccountID),
 	FOREIGN KEY(GroupID) REFERENCES `Group`(GroupID),
 	FOREIGN KEY(AccountID) REFERENCES `Account`(AccountID)
 );
 
-DROP TABLE IF EXISTS TypeQuestion;
-CREATE TABLE TypeQuestion (
+DROP TABLE IF EXISTS `TypeQuestion`;
+CREATE TABLE `TypeQuestion`(
 	TypeID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	TypeName ENUM('Essay','Multiple-Choice') NOT NULL UNIQUE KEY
 );
 
-DROP TABLE IF EXISTS CategoryQuestion;
+DROP TABLE IF EXISTS `CategoryQuestion`;
 CREATE TABLE CategoryQuestion(
 	CategoryID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	CategoryName NVARCHAR(50) NOT NULL UNIQUE KEY
@@ -103,7 +103,7 @@ CREATE TABLE ExamQuestion(
 );
 
 -- Thêm dữ liệu vào các bảng
-INSERT INTO Department(DepartmentName)
+INSERT INTO `Department`(DepartmentName)
 VALUES	('Marketing'),
 		('Sale'),
 		('Bảo vệ'),
