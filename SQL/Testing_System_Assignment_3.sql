@@ -16,20 +16,24 @@ FROM
 WHERE
     DepartmentName = 'Sale';
 
--- Câu 4: Lấy ra thông tin account có fullname dài nhất
--- Query lồng nhau
+-- Câu 4: Lấy ra thông tin account có fullname dài nhất (độ dài số kí tự)
+-- Query lồng nhau (SUB QUERY)
 SELECT * FROM `Account` 
-WHERE LENGTH(Fullname) = (SELECT MAX(LENGTH(Fullname)) FROM `Account`)
+WHERE LENGTH(Fullname) = (
+	SELECT MAX(LENGTH(Fullname)) FROM `Account`
+)
 ORDER BY AccountID;
 
 -- Câu 5: Lấy ra thông tin account có full name dài nhất và thuộc phòng ban có id = 3
 -- B1: Lọc những Account thuộc phòng ban số 3
-WITH CTE_DEP3 AS (SELECT * FROM `Account` WHERE DepartmentID = 3)
+-- CTE = Common table expression (Không thể đi riêng)
+WITH CTE_DEP3 AS (
+	SELECT * FROM `Account` WHERE DepartmentID = 3
+)
 -- B2: Tìm trong kết quả đã lọc Account có tên dài nhất
 SELECT * FROM `CTE_DEP3`
-WHERE LENGTH(Fullname) = (SELECT MAX(LENGTH(Fullname)) FROM `CTE_DEP3`)
+WHERE LENGTH(Fullname) = (SELECT MAX(LENGTH(Fullname)) FROM `CTE_DEP3`) 
 ORDER BY Fullname;
-
 
 -- Câu 6: Lấy ra tên group đã tạo trước ngày 20/12/2019
 SELECT 
@@ -52,7 +56,7 @@ HAVING COUNT(A.QuestionID) >= 4;
 SELECT 
     `Code`
 FROM
-    Exam
+    `Exam`
 WHERE
     Duration >= 60 AND CreateDate < '2019-12-20';
     
@@ -66,7 +70,7 @@ LIMIT 5;
 
 -- Câu 10: Đếm số nhân viên thuộc department có id = 2
 SELECT 
-    COUNT(AccountID) AS NumberOfAccount
+    COUNT(AccountID) AS NumberOfAccountDepartment2
 FROM
     `Account`
 WHERE
@@ -79,8 +83,11 @@ FROM
     `Account`
 WHERE
     FullName LIKE 'D%o';
-    
-SELECT (SUBSTRING_INDEX(FullName, ' ', 1)) FROM `Account`;
+
+INSERT INTO `Account`(Email , Username, FullName , DepartmentID , PositionID, CreateDate)
+VALUES 	('Email13@gmail.com' ,'Username13' ,'Dương Hoàng Giang' , 5 , 1,'2020-03-05');
+
+SELECT (SUBSTRING_INDEX(FullName, ' ', 3)) FROM `Account` WHERE AccountID = 15;
 SELECT (SUBSTRING_INDEX(FullName, ' ', 2)) FROM `Account`;
 SELECT (SUBSTRING_INDEX(FullName, ' ', 3)) FROM `Account`;
 

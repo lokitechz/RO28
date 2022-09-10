@@ -1,15 +1,21 @@
+-- Xoá database đi nếu tồn tại
 DROP DATABASE IF EXISTS Testing_System_Assignment_1;
-CREATE DATABASE Testing_System_Assignment_1 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
+-- Tạo database với tên là Testing_System_Assignment_1
+CREATE DATABASE Testing_System_Assignment_1;
+
+-- Sử dụng database vừa tạo
 USE Testing_System_Assignment_1;
 
+-- Xoá bảng Department nếu tồn tại
 DROP TABLE IF EXISTS `Department`;
+-- Tạo bảng Department
 CREATE TABLE `Department`(
-	DepartmentID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-	DepartmentName VARCHAR(30) NOT NULL UNIQUE KEY
+	DepartmentID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY, -- Mã phòng là khoá chính duy nhất không đc trùng nhau chỉ nhận giá trị dương
+	DepartmentName VARCHAR(30) NOT NULL UNIQUE KEY  -- Tên phòng ban có 30 kí tự và không đc trùng nhau và bỏ trống
 );
 
-DROP TABLE IF EXISTS Position;
+DROP TABLE IF EXISTS `Position`;
 CREATE TABLE `Position`(
 	PositionID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	PositionName ENUM('Dev','Test','Scrum Master','PM') NOT NULL UNIQUE KEY
@@ -20,12 +26,12 @@ CREATE TABLE `Account`(
 	AccountID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	Email VARCHAR(50) NOT NULL UNIQUE KEY,
 	Username VARCHAR(50) NOT NULL UNIQUE KEY,
-	FullName VARCHAR(50) NOT NULL,
-	DepartmentID TINYINT UNSIGNED NOT NULL,
-	PositionID TINYINT UNSIGNED NOT NULL,
-	CreateDate DATETIME DEFAULT NOW(),
-	FOREIGN KEY(DepartmentID) REFERENCES Department(DepartmentID),
-	FOREIGN KEY(PositionID) REFERENCES `Position`(PositionID)
+	FullName VARCHAR(100) NOT NULL,
+	DepartmentID TINYINT UNSIGNED NOT NULL,-- Liên kết với bảng Department
+	PositionID TINYINT UNSIGNED NOT NULL,-- Liên kết với bảng Position
+	CreateDate DATETIME DEFAULT NOW(),-- Mặc định nếu không thêm thì sẽ lấy giá trị là ngày tháng năm hiện tại
+	FOREIGN KEY(DepartmentID) REFERENCES `Department`(DepartmentID) ON DELETE CASCADE,
+	FOREIGN KEY(PositionID) REFERENCES `Position`(PositionID) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS `Group`;
@@ -34,7 +40,7 @@ CREATE TABLE `Group`(
 	GroupName NVARCHAR(50) NOT NULL UNIQUE KEY,
 	CreatorID TINYINT UNSIGNED,
 	CreateDate DATETIME DEFAULT NOW(),
-	FOREIGN KEY(CreatorID) REFERENCES `Account`(AccountID)
+	FOREIGN KEY(CreatorID) REFERENCES `Account`(AccountID) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS `GroupAccount`;
@@ -42,9 +48,9 @@ CREATE TABLE `GroupAccount`(
 	GroupID TINYINT UNSIGNED NOT NULL,
 	AccountID TINYINT UNSIGNED NOT NULL,
 	JoinDate DATETIME DEFAULT NOW(),
-	PRIMARY KEY(GroupID,AccountID),
-	FOREIGN KEY(GroupID) REFERENCES `Group`(GroupID),
-	FOREIGN KEY(AccountID) REFERENCES `Account`(AccountID)
+	PRIMARY KEY(GroupID, AccountID),
+	FOREIGN KEY(GroupID) REFERENCES `Group`(GroupID) ON DELETE CASCADE,
+	FOREIGN KEY(AccountID) REFERENCES `Account`(AccountID) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS `TypeQuestion`;
@@ -66,9 +72,9 @@ CREATE TABLE Question(
 	TypeID TINYINT UNSIGNED NOT NULL,
 	CreatorID TINYINT UNSIGNED NOT NULL,
 	CreateDate DATETIME DEFAULT NOW(),
-	FOREIGN KEY(CategoryID) REFERENCES CategoryQuestion(CategoryID),
-	FOREIGN KEY(TypeID) REFERENCES TypeQuestion(TypeID),
-	FOREIGN KEY(CreatorID) REFERENCES `Account`(AccountId)
+	FOREIGN KEY(CategoryID) REFERENCES CategoryQuestion(CategoryID) ON DELETE CASCADE,
+	FOREIGN KEY(TypeID) REFERENCES TypeQuestion(TypeID) ON DELETE CASCADE,
+	FOREIGN KEY(CreatorID) REFERENCES `Account`(AccountId) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS Answer;
@@ -77,7 +83,7 @@ CREATE TABLE Answer(
 	Content NVARCHAR(100) NOT NULL,
 	QuestionID TINYINT UNSIGNED NOT NULL,
 	isCorrect BIT DEFAULT 1,
-	FOREIGN KEY(QuestionID) REFERENCES Question(QuestionID)
+	FOREIGN KEY(QuestionID) REFERENCES Question(QuestionID) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS Exam;
@@ -89,16 +95,16 @@ CREATE TABLE Exam(
 	Duration TINYINT UNSIGNED NOT NULL,
 	CreatorID TINYINT UNSIGNED NOT NULL,
 	CreateDate DATETIME DEFAULT NOW(),
-	FOREIGN KEY(CategoryID) REFERENCES CategoryQuestion(CategoryID),
-	FOREIGN KEY(CreatorID) REFERENCES `Account`(AccountId)
+	FOREIGN KEY(CategoryID) REFERENCES CategoryQuestion(CategoryID) ON DELETE CASCADE,
+	FOREIGN KEY(CreatorID) REFERENCES `Account`(AccountId) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS ExamQuestion;
 CREATE TABLE ExamQuestion(
 	ExamID TINYINT UNSIGNED NOT NULL,
 	QuestionID TINYINT UNSIGNED NOT NULL,
-	FOREIGN KEY(QuestionID) REFERENCES Question(QuestionID),
-	FOREIGN KEY(ExamID) REFERENCES Exam(ExamID) ,
+	FOREIGN KEY(QuestionID) REFERENCES Question(QuestionID) ON DELETE CASCADE,
+	FOREIGN KEY(ExamID) REFERENCES Exam(ExamID) ON DELETE CASCADE,
 	PRIMARY KEY (ExamID,QuestionID)
 );
 

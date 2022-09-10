@@ -6,12 +6,14 @@ DROP PROCEDURE IF EXISTS SP_GetAccFromDepartName;
 DELIMITER $$
 	CREATE PROCEDURE SP_GetAccFromDepartName(IN departmentName VARCHAR(50))
 	BEGIN
-	SELECT A.AccountID, A.FullName, D.DepartmentName 
-    FROM `Account` A
-	JOIN `Department` D ON D.DepartmentID = A.DepartmentID
-	WHERE D.DepartmentName = departmentName;
+		SELECT A.AccountID, A.FullName, D.DepartmentName 
+		FROM `Account` A
+		JOIN `Department` D ON D.DepartmentID = A.DepartmentID
+		WHERE D.DepartmentName = departmentName;
 	END $$
 DELIMITER ;
+
+DELETE FROM `Department` WHERE DepartmentID  = 2;
 
 CALL SP_GetAccFromDepartName('Sale');
 CALL SP_GetAccFromDepartName('No person');
@@ -22,13 +24,28 @@ DROP PROCEDURE IF EXISTS SP_GetCountAccFromGroup;
 DELIMITER $$
 	CREATE PROCEDURE SP_GetCountAccFromGroup(IN groupName VARCHAR(50))
 	BEGIN
-	SELECT g.GroupName, COUNT(ga.AccountID) AS SL 
-    FROM `GroupAccount` ga
-	JOIN `Group` g ON ga.GroupID = g.GroupID
-	WHERE g.GroupName = groupName
-	GROUP BY ga.GroupID;
+		SELECT g.GroupName, COUNT(ga.AccountID) AS SL 
+		FROM `GroupAccount` ga
+		JOIN `Group` g ON ga.GroupID = g.GroupID
+		WHERE g.GroupName = groupName
+		GROUP BY ga.GroupID;
 	END$$
 DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS GET_GROUP_NAME;
+DELIMITER $$
+  CREATE PROCEDURE GET_GROUP_NAME(IN GROUP_NAME VARCHAR(50))
+     BEGIN
+       SELECT G.GroupName, COUNT(GR.AccountID) AS SL
+       FROM `GroupAccount` GR
+       JOIN `Group` G ON G.GroupID = GR.GroupID
+       WHERE G.GroupName = GROUP_NAME
+       GROUP BY GR.GroupID;
+     END $$
+DELIMITER ;
+
+CALL GET_GROUP_NAME('Testing System');
 
 CALL SP_GetCountAccFromGroup('Testing System');
 CALL SP_GetCountAccFromGroup('Management');
@@ -38,12 +55,14 @@ DROP PROCEDURE IF EXISTS sp_GetCountTypeInMonth;
 DELIMITER $$
 	CREATE PROCEDURE sp_GetCountTypeInMonth()
 	BEGIN
-	SELECT tq.TypeName, count(q.TypeID) FROM question q
-	INNER JOIN typequestion tq ON q.TypeID = tq.TypeID
-	WHERE month(q.CreateDate) = month(now()) AND year(q.CreateDate) = year(now())
-	GROUP BY q.TypeID;
+		SELECT tq.TypeName, count(q.TypeID) FROM question q
+		INNER JOIN typequestion tq ON q.TypeID = tq.TypeID
+		WHERE month(q.CreateDate) = month(now()) AND year(q.CreateDate) = year(now())
+		GROUP BY q.TypeID;
 	END$$
 DELIMITER ;
+
+SELECT month(now());
 
 CALL sp_GetCountTypeInMonth();
     
@@ -76,9 +95,9 @@ DROP PROCEDURE IF EXISTS sp_getNameAccOrNameGroup;
 DELIMITER $$
 	CREATE PROCEDURE sp_getNameAccOrNameGroup(IN input VARCHAR(50))
 	BEGIN
-	SELECT g.GroupName FROM `group` g WHERE g.GroupName LIKE CONCAT("%",input,"%")
-	UNION
-	SELECT a.Username FROM `account` a WHERE a.Username LIKE CONCAT("%",input,"%");
+		SELECT g.GroupName FROM `group` g WHERE g.GroupName LIKE CONCAT("%",input,"%")
+		UNION
+		SELECT a.Username FROM `account` a WHERE a.Username LIKE CONCAT("%",input,"%");
 	END$$
 DELIMITER ;
 
