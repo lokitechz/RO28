@@ -1,4 +1,6 @@
-package entity;
+import entity.Account;
+import entity.Department;
+import entity.Position;
 
 import java.util.Scanner;
 
@@ -6,17 +8,15 @@ public class Main {
 
 	public static void main(String[] args) {
 		System.out.println("Question 8: Viết chương trình thực hiện theo flow");
-		Scanner sc = new Scanner(System.in); // Khởi tạo 1 đối tượng cho phép lấy dữ liệu người dùng nhập vào
-		// Giá trị lưu chữ sự lựa chọn từ người đùng
-		int inputFromUser;
+		// Khởi tạo 1 đối tượng cho phép lấy dữ liệu người dùng nhập vào
+		Scanner sc = new Scanner(System.in);
 		while (true) {
-			System.out.println("Mời bạn chọn chức năng:" + "\n"
-					                   + "1. Tạo Account."
-					                   + "\n" + "2. Tạo Department");
-			// Quyết
-			inputFromUser = sc.nextInt();
-			if (inputFromUser == 1 || inputFromUser == 2) {
-				switch (inputFromUser) {
+			System.out.println("Mời bạn chọn 1 chức năng để thực hiện chương trình");
+			System.out.println("Ấn phím 1: Tạo tài khoản");
+			System.out.println("Ấn phím 2: Tạo phòng ban");
+			int choose = sc.nextInt();
+			if (choose == 1 || choose == 2) {
+				switch (choose) {
 					case 1:
 						createAccount();
 						break;
@@ -31,12 +31,11 @@ public class Main {
 		}
 	}
 
-	// Phương thức không trả về dữ liệu
 	public static void createAccount() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Mời bạn nhập vào thông tin account cân tạo");
+		System.out.println("Mời bạn nhập vào thông tin account cần tạo");
 		Account acc = new Account();
-		System.out.println("Nhập ID: ");
+		System.out.println("Nhập id: ");
 		acc.id = sc.nextInt();
 		System.out.println("Nhập email: ");
 		acc.email = sc.next();
@@ -46,7 +45,6 @@ public class Main {
 		acc.fullName = sc.next();
 		System.out.println("Nhập position (Nhập các số từ 1 đến 4 tương ứng với:1.Dev, 2. Test, 3. Scrum_Master, 4. PM):");
 		int posNum = sc.nextInt();
-
 		switch (posNum) {
 			case 1:
 				Position pos1 = new Position();
