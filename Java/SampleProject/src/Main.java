@@ -7,31 +7,43 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.println("Question 8: Viết chương trình thực hiện theo flow");
 		// Khởi tạo 1 đối tượng cho phép lấy dữ liệu người dùng nhập vào
 		Scanner sc = new Scanner(System.in);
-		while (true) {
-			System.out.println("Mời bạn chọn 1 chức năng để thực hiện chương trình");
-			System.out.println("Ấn phím 1: Tạo tài khoản");
-			System.out.println("Ấn phím 2: Tạo phòng ban");
-			int choose = sc.nextInt();
-			if (choose == 1 || choose == 2) {
-				switch (choose) {
-					case 1:
-						createAccount();
-						break;
-					case 2:
-						createDepartment();
-						break;
-				}
-				return;
-			} else {
-				System.out.println("Số bạn vừa chọn không đúng: ");
+		int choiceNumber;
+		boolean exit = false;
+		do {
+			showMenu();
+			choiceNumber = sc.nextInt();
+			switch (choiceNumber) {
+				case 1:
+					createAccount();
+					break;
+
+				case 2:
+					createDepartment();
+					break;
+
+				case 3:
+					exit = true;
+					break;
+
+				default:
+					System.out.println("Bạn đã chọn sai chức năng mời bạn chạy lại chương trình và chọn lại các chức năng 1/2/3");
+					break;
 			}
-		}
+		} while (!exit);
 	}
 
-	public static void createAccount() {
+	private static void showMenu() {
+		System.out.println("+---------------------------------------------------+");
+		System.out.println("1.Tạo account");
+		System.out.println("2.Tạo phòng ban");
+		System.out.println("3.Kết thúc");
+		System.out.println("+---------------------------------------------------+");
+		System.out.print("Hãy nhập vào sự lựa chọn của bạn: ");
+	}
+
+	private static void createAccount() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Mời bạn nhập vào thông tin account cần tạo");
 		Account acc = new Account();
@@ -68,6 +80,7 @@ public class Main {
 				break;
 		}
 		System.out.println(acc);
+		// Add account vaof 1 danhs
 	}
 
 	private static void createDepartment() {
