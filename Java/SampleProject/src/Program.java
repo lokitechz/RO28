@@ -12,16 +12,16 @@ public class Program {
 	public static void main(String[] args) {
 		// Tạo Department
 		Department dep1 = new Department();
-		dep1.id = 1;
-		dep1.name = "Marketing";
+		dep1.setId(1);
+		dep1.setName("Marketing");
 
 		Department dep2 = new Department();
-		dep2.id = 2;
-		dep2.name = "Sale";
+//		dep2.id = 2;
+//		dep2.name = "Sale";
 
 		Department dep3 = new Department();
-		dep3.id = 3;
-		dep3.name = "BOD";
+//		dep3.id = 3;
+//		dep3.name = "BOD";
 
 		// Tạo Position
 		Position pos1 = new Position();
@@ -49,7 +49,7 @@ public class Program {
 
 		// Tạo Account
 		Account acc1 = new Account();
-		acc1.id = 1;
+//		acc1.id = 1;
 		acc1.email = "daonq1";
 		acc1.userName = "daonq1";
 		acc1.fullName = "Dao Nguyen 1";
@@ -59,7 +59,7 @@ public class Program {
 		acc1.groups = new Group[]{group1, group2};
 
 		Account acc2 = new Account();
-		acc2.id = 2;
+//		acc2.id = 2;
 		acc2.email = "daonq2";
 		acc2.userName = "daonq2";
 		acc2.fullName = "Dao Nguyen 2";
@@ -69,7 +69,7 @@ public class Program {
 		acc2.groups = new Group[]{group2, group3};
 
 		Account acc3 = new Account();
-		acc3.id = 3;
+//		acc3.id = 3;
 		acc3.email = "daonq3";
 		acc3.userName = "daonq3";
 		acc3.fullName = "Dao Nguyen 3";
@@ -82,7 +82,7 @@ public class Program {
 		if (acc2.department == null) {
 			System.out.println("Nhân viên này chưa có phòng ban");
 		} else {
-			System.out.println("Phòng ban của nhân viên này là " + acc2.department.name);
+			System.out.println("Phòng ban của nhân viên này là " + acc2.department.getName());
 		}
 		System.out.print("\n");
 		System.out.println("---------- Question 2 ----------");
@@ -104,7 +104,7 @@ public class Program {
 		System.out.println("---------- Question 3 ----------");
 		System.out.println(acc2.department == null
 		                   ? "Nhân viên này chưa có phòng ban."
-		                   : "Phòng của nhân viên này là: " + acc2.department.name);
+		                   : "Phòng của nhân viên này là: " + acc2.department.getName());
 		System.out.print("\n");
 		System.out.println("---------- Question 4 ----------");
 		System.out.println(acc1.position.name.toString().equalsIgnoreCase("Dev")
@@ -155,7 +155,7 @@ public class Program {
 			System.out.println("Thông tin account thứ " + (i + 1) + " là:");
 			System.out.println("Email: " + accounts.get(i).email);
 			System.out.println("Full name: " + accounts.get(i).fullName);
-			System.out.println("Phòng ban: " + accounts.get(i).department.name);
+			System.out.println("Phòng ban: " + accounts.get(i).department.getName());
 			i++;
 		} while (i < accounts.size());
 

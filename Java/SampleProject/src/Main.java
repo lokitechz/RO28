@@ -48,7 +48,7 @@ public class Main {
 		System.out.println("Mời bạn nhập vào thông tin account cần tạo");
 		Account acc = new Account();
 		System.out.println("Nhập id: ");
-		acc.id = sc.nextInt();
+//		acc.id = sc.nextInt();
 		System.out.println("Nhập email: ");
 		acc.email = sc.next();
 		System.out.println("Nhập userName: ");
@@ -88,9 +88,9 @@ public class Main {
 		System.out.println("Mời bạn nhập vào thông tin Department cân tạo");
 		Department department = new Department();
 		System.out.print("Nhập ID: ");
-		department.id = sc.nextInt();
+//		department.id = sc.nextInt();
 		System.out.print("Nhập Name: ");
-		department.name = sc.next();
+//		department.name = sc.next();
 		System.out.println(department);
 	}
 
