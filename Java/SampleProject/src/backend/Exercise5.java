@@ -15,8 +15,10 @@ public class Exercise5 {
 	// Biến lưu trữ danh sách nhân viên
 	private static final List<Staff> staffs = new ArrayList<>();
 
+	// Biến scanner để quét dữ liệu
 	private static final Scanner sc = new Scanner(System.in);
 
+	// Hiển thị menu của ứng dụng
 	public static void showMenu() {
 		System.out.println("+---------------------------------------------------+");
 		System.out.println("1.Thêm mới nhân viên");
@@ -89,18 +91,18 @@ public class Exercise5 {
 		}
 	}
 
-	// Hàm tìm kiếm nhân viên theo tên
-	public static void searchByName() {
-		System.out.println("Nhập vào tên bạn muốn tìm kiêm");
+	// Hàm tìm kiếm nhân viên theo tên trả về thông tin của nhân viên đó
+	public static Staff searchByName() {
+		System.out.println("Nhập vào tên bạn muốn tìm kiếm");
 		String name = sc.nextLine();
 		for (Staff staff : staffs) {
 			if (name.equalsIgnoreCase(staff.getName())) {
-				System.out.println(staff);
-				return;
-			} else {
-				System.out.println("Không tìm thấy thông tin nhân viên với tên này");
+				// Tìm thấy thông tin có tên phù hợp trả về thông tin của nhân viên đó
+				return staff;
 			}
 		}
+		// Không tìm thấy trả về null
+		return null;
 	}
 
 	// Hàm hiển thị danh sách nhân viên

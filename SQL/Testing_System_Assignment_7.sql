@@ -30,6 +30,3 @@ SHOW CREATE TRIGGER trg_CheckInsertGroup;
 
 INSERT INTO `Group` (`GroupName`, `CreatorID`, `CreateDate`)
 VALUES ('4', '1', '2018-04-10 00:00:00');
-
-
-

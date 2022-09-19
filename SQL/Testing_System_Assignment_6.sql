@@ -6,7 +6,7 @@ CREATE FUNCTION FT_GETFULLNAME(accountId INT)
 RETURNS VARCHAR(250) -- Kieu du lieu muon tra ve
 DETERMINISTIC
     BEGIN
-        DECLARE fullname VARCHAR(250); 
+        DECLARE fullname VARCHAR(250);
         --  DECLARE khai bao 1 bien dung de luu tru ket qua tra ve
         SELECT A.FullName INTO fullname FROM `Account` A WHERE A.AccountID = accountId; 
         -- Lay full name tu bang account vaf gan vao bien fullname vua tao
@@ -15,6 +15,7 @@ DETERMINISTIC
 DELIMITER ;
 
 SELECT FT_GETFULLNAME(3);
+
 
 -- Câu 1: Tạo store để người dùng nhập vào tên phòng ban và in ra tất cả các
 -- account thuộc phòng ban đó
