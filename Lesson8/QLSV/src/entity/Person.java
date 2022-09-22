@@ -2,7 +2,7 @@ package entity;
 
 public class Person {
 
-	private String name;
+	private String fullName;
 
 	private int age;
 
@@ -10,23 +10,19 @@ public class Person {
 
 	private String address;
 
-	public enum Gender {
-		MALE, FEMALE, UNKNOWN
-	}
-
-	public Person(String name, int age, Gender gender, String address) {
-		this.name = name;
+	public Person(String fullName, int age, Gender gender, String address) {
+		this.fullName = fullName;
 		this.age = age;
 		this.gender = gender;
 		this.address = address;
 	}
 
-	public String getName() {
-		return name;
+	public String getFullName() {
+		return fullName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 	public int getAge() {
@@ -53,4 +49,7 @@ public class Person {
 		this.address = address;
 	}
 
+	public enum Gender {
+		MALE, FEMALE, UNKNOWN
+	}
 }
