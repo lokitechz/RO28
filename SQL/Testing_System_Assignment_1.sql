@@ -12,8 +12,7 @@ DROP TABLE IF EXISTS `Department`;
 -- Tạo bảng Department
 CREATE TABLE `Department`(
 	DepartmentID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY, -- Mã phòng là khoá chính duy nhất không đc trùng nhau chỉ nhận giá trị dương
-	DepartmentName VARCHAR(30) NOT NULL UNIQUE KEY, -- Tên phòng ban có 30 kí tự và không đc trùng nhau và bỏ trống
-	IsActive 	BOOLEAN -- Định nghĩa trạng thái của phòng ban
+	DepartmentName VARCHAR(50) NOT NULL UNIQUE KEY -- Tên phòng ban có 30 kí tự và không đc trùng nhau và bỏ trống
 );
 
 DROP TABLE IF EXISTS `Position`;
@@ -110,18 +109,18 @@ CREATE TABLE ExamQuestion(
 );
 
 -- Thêm dữ liệu vào các bảng
-INSERT INTO `Department`(DepartmentName, IsActive)
-VALUES	('Marketing',true),
-		('Sale',false),
-		('Bảo vệ',1),
-		('Nhân sự',0),
-		('Kỹ thuật',1),
-		('Tài chính',1),
-		('Phó giám đốc',0),
-		('Giám đốc',0),
-		('Thư kí',0),
-		('No person',1),
-		('Bán hàng',1);
+INSERT INTO `Department`(DepartmentName)
+VALUES	('Marketing'),
+		('Sale'),
+		('Bảo vệ'),
+		('Nhân sự'),
+		('Kỹ thuật'),
+		('Tài chính'),
+		('Phó giám đốc'),
+		('Giám đốc'),
+		('Thư kí'),
+		('No person'),
+		('Bán hàng');
 
 INSERT INTO `Position`(PositionName)
 VALUES 	('Dev'),

@@ -28,58 +28,73 @@ public class Excercise {
 			System.out.println("3. Exit.");
 			System.out.println("=======================================================================");
 			System.out.print("Hãy nhập vào sự lựa chọn của bạn: ");
-			int menuChoose = Integer.parseInt(sc.nextLine());
-			switch (menuChoose) {
-				case 1:
-					System.out.print("Mời bạn nhập vào số sinh viên muốn thêm: ");
-					int number = Integer.parseInt(sc.nextLine());
-					for (int i = 0; i < number; i++) {
-						addStudent(i + 1);
-					}
-					break;
+			try {
+				// Trong trường hợp giá trị nhập vào không phải là số
+				int menuChoose = Integer.parseInt(sc.nextLine());
+				switch (menuChoose) {
+					case 1:
+						System.out.print("Mời bạn nhập vào số sinh viên muốn thêm: ");
+						int number = Integer.parseInt(sc.nextLine());
+						for (int i = 0; i < number; i++) {
+							addStudent(i + 1);
+						}
+						break;
 
-				case 2:
-					showInformation();
-					break;
+					case 2:
+						showInformation();
+						break;
 
-				case 3:
-					System.exit(0);
-					return;
+					case 3:
+						System.exit(0);
+						return;
 
-				default:
-					System.out.println("Bạn đã chọn sai chức năng mời bạn chạy lại chương trình và chọn lại các chức năng từ 1 đến 3");
-					break;
+					default:
+						System.out.println("Bạn đã chọn sai chức năng mời bạn chạy lại chương trình và chọn lại các chức năng từ 1 đến 3");
+						break;
+				}
+			} catch (Exception e) {
+				// In ra nguyên nhân lỗi
+				System.out.println("Nguyên nhân lỗi là: " + e.getMessage());
+				// In ra thông báo nếu sự lựa chọn không phải là số
+				System.out.println("Lựa chọn bạn vừa nhập không phải là số vui lòng nhập lại");
 			}
 		}
 	}
 
 	// Phương thức nhập thông tin sinh viên
 	public void addStudent(int i) {
-		System.out.println("Hãy nhập thông tin học sinh thứ " + i);
-		System.out.println("Nhập vào họ và tên:");
-		String fullName = sc.nextLine();
-		System.out.println("Nhập vào tuổi:");
-		int age = Integer.parseInt(sc.nextLine());
-		System.out.println("Nhập vào giới tính 1.Male, 2.Female, 3.Unknown");
-		int flagGender = Integer.parseInt(sc.nextLine());
-		Person.Gender gender;
-		switch (flagGender) {
-			case 1:
-				gender = Person.Gender.MALE;
-				break;
-			case 2:
-				gender = Person.Gender.FEMALE;
-				break;
-			default:
-				gender = Person.Gender.UNKNOWN;
-				break;
+		try {
+			// Thực hiện cho phép người dùng nhập vào thông tin của sinh viên
+			System.out.println("Hãy nhập thông tin học sinh thứ " + i);
+			System.out.println("Nhập vào họ và tên:");
+			String fullName = sc.nextLine();
+			System.out.println("Nhập vào tuổi:");
+			int age = Integer.parseInt(sc.nextLine());
+			System.out.println("Nhập vào giới tính 1.Male, 2.Female, 3.Unknown");
+			int flagGender = Integer.parseInt(sc.nextLine());
+			Person.Gender gender;
+			switch (flagGender) {
+				case 1:
+					gender = Person.Gender.MALE;
+					break;
+				case 2:
+					gender = Person.Gender.FEMALE;
+					break;
+				default:
+					gender = Person.Gender.UNKNOWN;
+					break;
+			}
+			System.out.println("Nhập vào địa chỉ:");
+			String address = sc.nextLine();
+			System.out.println("Nhập vào chuyên nghành học:");
+			String major = sc.nextLine();
+			Student student = new Student(fullName, age, gender, address, major);
+			students.add(student);
+		} catch (Exception e) {
+			System.out.println("Nguyên nhân lỗi là : " + e.getMessage());
+			// Nếu xảy ra lỗi thì hiển thị thông báo
+			System.out.println("Bạn đã nhập sai thông tin mời bạn nhập lại");
 		}
-		System.out.println("Nhập vào địa chỉ:");
-		String address = sc.nextLine();
-		System.out.println("Nhập vào chuyên nghành học:");
-		String major = sc.nextLine();
-		Student student = new Student(fullName, age, gender, address, major);
-		students.add(student);
 	}
 
 	// Phương thức hiển thị thông tin

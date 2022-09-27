@@ -7,4 +7,5 @@ public class Main {
 		Excercise ex = new Excercise();
 		ex.loadMenu();
 	}
+
 }

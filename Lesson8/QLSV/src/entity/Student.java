@@ -21,7 +21,7 @@ public class Student extends Person {
 	public String toString() {
 		// Tạo 1 đối tượng StringBuilder để nối chuỗi
 		StringBuilder builder = new StringBuilder();
-		builder.append("Engineer ")
+		builder.append("Student ")
 		       .append("[fullName = ")
 		       .append(super.getFullName()).append(",")
 		       .append("age = ")
