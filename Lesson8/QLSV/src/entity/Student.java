@@ -17,6 +17,10 @@ public class Student extends Person {
 		this.major = major;
 	}
 
+	public static String getABC(){
+
+	}
+
 	@Override
 	public String toString() {
 		// Tạo 1 đối tượng StringBuilder để nối chuỗi

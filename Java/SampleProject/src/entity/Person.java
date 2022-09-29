@@ -10,6 +10,8 @@ public class Person {
 
 	private String address;
 
+	public Person(String name, int age) {}
+
 	public enum Gender {
 		MALE, FEMALE, UNKNOWN
 	}
