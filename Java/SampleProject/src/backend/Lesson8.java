@@ -1,12 +1,21 @@
 package backend;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Lesson8 {
 
 	public static void main(String[] args) {
+//		List<StudentLesson8> students = new ArrayList<>();
+//		students.add(new StudentLesson8("Giang1"));
+//		students.add(new StudentLesson8("Giang2"));
+//		students.add(new StudentLesson8("Giang3"));
+//		students.add(new StudentLesson8("Giang4"));
+//		students.add(new StudentLesson8("Giang5"));
+//		students.add(new StudentLesson8("Giang1"));
+//		students.add(new StudentLesson8("Giang1"));
+//		for (StudentLesson8 student : students){
+//			System.out.println(student);
+//		}
 		List<Integer> ages = new ArrayList<>();
 		System.out.println(ages);
 		// Sử dụng hàm add để thêm dữ liệu
@@ -32,6 +41,28 @@ public class Lesson8 {
 		ages.clear();
 		System.out.println("Danh sách sau chạy hàm clear");
 		System.out.println(ages);
+		Stack<Integer> stacks = new Stack<>();
+		stacks.push(1);
+		stacks.push(2);
+		stacks.push(3);
+		stacks.push(4);
+		stacks.push(5);
+		System.out.println(stacks);
+		System.out.println(stacks.pop());
+		System.out.println(stacks.pop());
+		System.out.println(stacks.pop());
+		System.out.println(stacks.pop());
+		System.out.println(stacks.pop());
+		System.out.println(stacks.isEmpty());
+		// kiểu dữ liệu Map lưu trữ dữ liệu dưới dạng key và value
+		Map<Integer, String> students = new HashMap<>();
+		// Hàm put cho phép thêm dữ liệu vào map
+		students.put(1, "Giang 1");
+		students.put(2, "Giang 2");
+		students.put(3, "Giang 3");
+		// Hàm get lấy dữ liệu theo key
+		System.out.println(students.get(2));
+
 	}
 
 }
