@@ -3,10 +3,15 @@ package entity;
 public class Student {
 
 	public static String college = "Đại học bách khoa";
+
+	public static Integer moneyGroup = 0;
+
+	public static int count = 0;
 	private Integer id;
 	private String name;
 
 	public Student() {
+		count++;
 	}
 
 	public Student(Integer id, String name) {
@@ -28,6 +33,14 @@ public class Student {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getCollege() {
+		return Student.college;
+	}
+
+	public void setCollege(String college) {
+		Student.college = college;
 	}
 
 	@Override
