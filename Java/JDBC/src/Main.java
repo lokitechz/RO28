@@ -17,6 +17,20 @@ public class Main {
 			// 3. password mật khẩu của tài khoản
 			Connection con = DriverManager.getConnection(Constant.databaseUrl, Constant.userName, Constant.password);
 			// Nếu kết nối không thành công thì sẽ trả về null
+			// Gọi hàm thêm mới 1 account
+			createAccount(con);
+			System.out.println("Danh sách account sau khi thêm");
+			// Gọi hàm lấy danh sách sau khi thêm
+			getListAccount(con);
+			// Gọi hàm sửa dữ liệu
+			updateAccount(con);
+			System.out.println("Danh sách account sau khi cập nhật");
+			// Gọi hàm lấy danh sách sau khi thêm
+			getListAccount(con);
+			// Gọi hàm xoá dữ liệu
+			deleteAccount(con);
+			System.out.println("Danh sách account sau khi bị xoá");
+			// Gọi hàm lấy danh sách sau khi thêm
 			getListAccount(con);
 			System.out.println("Connect database success!");
 		} catch (ClassNotFoundException | SQLException e) {
@@ -25,6 +39,55 @@ public class Main {
 		}
 	}
 
+	// Hàm tạo mới account
+	private static void createAccount(Connection con) {
+		String sql = "INSERT INTO `Account` (Email,Username,FullName,DepartmentID,PositionID,CreateDate) " +
+				"VALUES (?,?,?,?,?,?)";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, "giang4@gmail.com");
+			ps.setString(2, "giang4");
+			ps.setString(3, "Dương Hoàng Giang");
+			ps.setInt(4, 3);
+			ps.setInt(5, 2);
+			ps.setDate(6, new Date(2022, 12, 10));
+			int result = ps.executeUpdate();
+			System.out.println("Thêm mới thành công " + result + " bản ghi");
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	// Hàm update account
+	private static void updateAccount(Connection con) {
+		String sql = "UPDATE `Account` " +
+				"SET Username  = ? " +
+				"WHERE AccountID = ?";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, "giangggg");
+			ps.setInt(2, 13);
+			int result = ps.executeUpdate();
+			System.out.println("Cập nhật thành công " + result + " bản ghi");
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	// Hàm delete account
+	private static void deleteAccount(Connection con) {
+		String sql = "DELETE FROM `Account` WHERE AccountID = ?";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, 13);
+			int result = ps.executeUpdate();
+			System.out.println("Xoá thành công " + result + " bản ghi");
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	// Hàm lấy danh sách account
 	private static List<Account> getListAccount(Connection con) {
 		List<Account> accounts = new ArrayList<>();
 		// Khai báo câu lệnh SQL muốn thực thi
@@ -48,13 +111,6 @@ public class Main {
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
-		} finally {
-			try {
-				// B5: Đóng kết nối đến CSDL
-				con.close();
-			} catch (SQLException e) {
-				throw new RuntimeException(e);
-			}
 		}
 		return accounts;
 	}
