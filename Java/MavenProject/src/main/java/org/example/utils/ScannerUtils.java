@@ -15,9 +15,9 @@ public class ScannerUtils {
 	public static int inputInt() {
 		while (true) {
 			try {
-				return Integer.parseInt(sc.next().trim());
+				return Integer.parseInt(String.valueOf(sc.nextInt()));
 			} catch (Exception e) {
-				System.err.println("Dữ liệu ban nhập vào không đúng mời nhập lại:");
+				System.err.println("Dữ liệu ban nhập vào không phải là số đúng mời nhập lại:");
 			}
 		}
 	}

@@ -2,11 +2,11 @@ USE Testing_System_Assignment_1;
 
 -- Cho phep nguoi dung nhap vao id cuar nhan vien sau do in ra ho ten
 DELIMITER $$
-CREATE FUNCTION FT_GETFULLNAME(accountId INT) 
-RETURNS VARCHAR(250) -- Kieu du lieu muon tra ve
-DETERMINISTIC
+	CREATE FUNCTION FT_GETFULLNAME(accountId INT) 
+	RETURNS VARCHAR(50) -- Kieu du lieu muon tra ve
+	DETERMINISTIC
     BEGIN
-        DECLARE fullname VARCHAR(250);
+        DECLARE fullname VARCHAR(1);
         --  DECLARE khai bao 1 bien dung de luu tru ket qua tra ve
         SELECT A.FullName INTO fullname FROM `Account` A WHERE A.AccountID = accountId; 
         -- Lay full name tu bang account vaf gan vao bien fullname vua tao
@@ -23,9 +23,10 @@ DROP PROCEDURE IF EXISTS SP_GetAccFromDepartName;
 DELIMITER $$
 	CREATE PROCEDURE SP_GetAccFromDepartName(IN departmentName VARCHAR(50))
 	BEGIN
-		SELECT A.AccountID, A.FullName, D.DepartmentName 
+		SELECT A.UserName,A.PositionID,D.DepartmentName
 		FROM `Account` A
-		JOIN `Department` D ON D.DepartmentID = A.DepartmentID
+		JOIN `Department` D 
+        ON D.DepartmentID = A.DepartmentID
 		WHERE D.DepartmentName = departmentName;
 	END $$
 DELIMITER ;
@@ -72,20 +73,20 @@ DROP PROCEDURE IF EXISTS sp_GetCountQuesFromType;
 DELIMITER $$
 	CREATE PROCEDURE sp_GetCountQuesFromType(OUT typeQuestionID TINYINT)
 	BEGIN
-	WITH CTE_CountTypeID AS (
-	SELECT count(q.TypeID) AS SL FROM question q
-	GROUP BY q.TypeID)
-	SELECT q.TypeID INTO typeQuestionID
-    FROM question q
-	GROUP BY q.TypeID
-	HAVING COUNT(q.TypeID) = (SELECT max(SL) FROM CTE_CountTypeID);
+		WITH CTE_CountTypeID AS (
+			SELECT COUNT(q.TypeID) AS SL FROM question q
+			GROUP BY q.TypeID)
+			SELECT q.TypeID INTO typeQuestionID
+			FROM question q
+			GROUP BY q.TypeID
+			HAVING COUNT(q.TypeID) = (SELECT max(SL) FROM CTE_CountTypeID
+        );
 	END$$
 DELIMITER ;
 
 -- TỪ KHOÁ DECLARE(KHAI BAO) CHO PHÉP KHAI BAO 1 BIẾN  ĐỂ LƯU TRỮ 1 GIÁ TRỊ NÀO ĐÓ
 
-INSERT INTO `account` (`Email`, `Username`, `FullName`,
-`DepartmentID`, `PositionID`, `CreateDate`)
+INSERT INTO `account` (`Email`, `Username`, `FullName`,`DepartmentID`, `PositionID`, `CreateDate`)
 VALUES (var_Email, v_Username, var_Fullname,
 v_DepartmentID, v_PositionID, v_CreateDate);
 
@@ -97,6 +98,7 @@ CALL sp_GetCountQuesFromType(@typeQuestionID);
 -- Sau khi gọi xong store procedure thì giá trị của biến out đã thay đổi
 -- Lấy giá trị của output
 SELECT @typeQuestionID;
+SELECT * FROM `TypeQuestion` WHERE TypeID = @typeQuestionID;
 
 -- Câu 6:
 DROP PROCEDURE IF EXISTS sp_getNameAccOrNameGroup;

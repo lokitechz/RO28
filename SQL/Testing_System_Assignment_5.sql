@@ -1,5 +1,9 @@
 USE Testing_System_Assignment_1;
 
+SELECT A.DepartmentID
+FROM `Account` A
+CROSS JOIN `Department`;
+
 -- Câu 1: Tạo view có chứa danh sách nhân viên thuộc phòng ban Sale
 -- Cách 1: Sử dụng view
 -- View lưu trữ dữ liệu vĩnh viễn trong ổ cứng 

@@ -19,6 +19,7 @@ public class Student {
 		this.name = name;
 	}
 
+	@Deprecated
 	public Integer getId() {
 		return id;
 	}

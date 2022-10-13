@@ -11,6 +11,7 @@ public class Student2 {
 		this.name = name;
 	}
 
+	@Deprecated
 	public int getId() {
 		return id;
 	}

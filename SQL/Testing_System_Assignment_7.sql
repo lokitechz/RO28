@@ -1,32 +1,27 @@
 USE Testing_System_Assignment_1;
 
-SHOW GLOBAL VARIABLES;
-
--- Trigger kiểm tra dữ liệu trước khi insert vào bảng group
-DROP TRIGGER IF EXISTS trg_CheckInsertGroup;
+DROP TRIGGER IF EXISTS Trg_CheckInsertGroup;
 DELIMITER $$
-	CREATE TRIGGER trg_CheckInsertGroup
+	CREATE TRIGGER Trg_CheckInsertGroup
 	BEFORE INSERT ON `Group`
-    -- trước khi insert vào bảng group
-	FOR EACH ROW -- Với mỗi dòng khi insert vào
+	FOR EACH ROW
 	BEGIN
-		DECLARE vCreateDate DATETIME;
-        -- Gán giá trị = ngày này 1 năm trước VD: 16/9/2021
-		SET vCreateDate = DATE_SUB(NOW(), INTERVAL 1 YEAR);
-        -- Gán cái giá trị của biến vCreateDate = ngày giờ hiện tại trừ 1 năm
-		IF (NEW.CreateDate <= vCreateDate) THEN
-			-- Thông báo với MySQL 1 trạng thái
-			SIGNAL SQLSTATE '34567'
-            -- Hiển thị thông báo với nội dung mong muôn
-			SET MESSAGE_TEXT = 'Không thể thêm bản ghi vì ngày tạo của dữ liệu đã quá 1 năm';
-		END IF;
+		DECLARE v_CreateDate DATETIME;
+		SET v_CreateDate = DATE_SUB(NOW(), INTERVAL 1 YEAR);
+		IF (NEW.CreateDate <= v_CreateDate) THEN
+		SIGNAL SQLSTATE '123Account45'
+		SET MESSAGE_TEXT = 'Không thể thêm dữ liệu vào vì ngày tạo không được quá 1 năm';
+	END IF;
 	END$$
 DELIMITER ;
 
--- DATE_SUB cho phép trừ ngày tháng năm theo 1 quy tắc nào đó
-SELECT DATE_SUB(NOW(), INTERVAL -1 YEAR);
-
-SHOW CREATE TRIGGER trg_CheckInsertGroup;
-
 INSERT INTO `Group` (`GroupName`, `CreatorID`, `CreateDate`)
-VALUES ('4', '1', '2018-04-10 00:00:00');
+VALUES ('2', '1', '2022-04-10 00:00:00');
+
+SELECT D.DepartmentName, 
+CASE 
+	WHEN COUNT(A.DepartmentID) = 0 THEN 'Không có User'
+	ELSE COUNT(A.DepartmentID) END AS SL 
+    FROM department D
+	LEFT JOIN account A ON D.DepartmentID = A.DepartmentID
+	GROUP BY d.DepartmentID;

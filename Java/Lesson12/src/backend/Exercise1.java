@@ -53,6 +53,7 @@ public class Exercise1 {
 		System.out.println("Tổng quỹ: " + (Student.moneyGroup -= 150));
 		System.out.println("Cả nhóm mỗi người lại đóng quỹ mỗi người 50k");
 		System.out.println("Tổng quỹ: " + (Student.moneyGroup += 150));
+		System.out.println("Sử dụng deprecate: " + students[0].getId());
 	}
 
 	public void question3() {

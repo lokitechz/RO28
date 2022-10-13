@@ -33,9 +33,12 @@ FROM `ExamQuestion` E
 JOIN `Question` Q ON Q.QuestionID = E.QuestionID
 GROUP BY E.QuestionID
 HAVING COUNT(E.QuestionID) = (
-	SELECT MAX(countQues) AS maxcountQues FROM (
-	SELECT COUNT(E.QuestionID) AS countQues FROM examquestion E
-	GROUP BY E.QuestionID) AS countTable
+	SELECT MAX(countQues) AS maxcountQues 
+    FROM (
+		SELECT COUNT(E.QuestionID) AS countQues 
+        FROM examquestion E
+		GROUP BY E.QuestionID
+	) AS countTable
 );
 -- Cách 2
 -- CTE đếm số lần xuất hiện của 1 câu hỏi ở trong bảng ExamQuestion và nhóm lại
@@ -51,7 +54,8 @@ SELECT * FROM `CTE_COUNT_Q` WHERE SL = (SELECT MAX(SL) FROM `CTE_COUNT_Q`);
 SELECT cq.CategoryID, cq.CategoryName, COUNT(q.CategoryID) AS SLSD 
 FROM `CategoryQuestion` cq
 JOIN `Question` q ON cq.CategoryID = q.CategoryID
-GROUP BY q.CategoryID ORDER BY CategoryID;
+GROUP BY q.CategoryID 
+ORDER BY CategoryID;
 
 -- Câu 7: Thông kê mỗi Question được sử dụng trong bao nhiêu Exam
 -- Sử dụng RIGHT JOIN
@@ -88,7 +92,7 @@ ORDER BY G.GroupID;
 -- Câu 10: Tìm chức vụ có ít người nhất
 SELECT P.PositionID, P.PositionName, COUNT( A.PositionID) AS SL 
 FROM `Account` A
-INNER JOIN `Position` P ON A.PositionID = P.PositionID
+JOIN `Position` P ON A.PositionID = P.PositionID
 GROUP BY A.PositionID
 HAVING COUNT(A.PositionID)= (
 	SELECT MIN(minP) 
@@ -109,7 +113,8 @@ ORDER BY DepartmentID;
 
 -- Câu 12: Lấy thông tin chi tiết của câu hỏi bao gồm: thông tin cơ bản của
 -- question, loại câu hỏi, ai là người tạo ra câu hỏi, câu trả lời là gì, ...
-SELECT Q.QuestionID, Q.Content, A.FullName, TQ.TypeName AS Author, ANS.Content FROM question Q
+SELECT Q.QuestionID, Q.Content, A.FullName AS Author, TQ.TypeName AS Type, ANS.Content 
+FROM `Question` Q
 JOIN `CategoryQuestion` CQ ON Q.CategoryID = CQ.CategoryID
 JOIN `TypeQuestion` TQ ON Q.TypeID = TQ.TypeID
 JOIN `Account` A ON A.AccountID = Q.CreatorID

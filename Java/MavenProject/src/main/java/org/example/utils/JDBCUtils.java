@@ -23,7 +23,7 @@ public class JDBCUtils {
 			String databaseUrl = properties.getProperty("databaseUrl");
 			String userName = properties.getProperty("username");
 			String password = properties.getProperty("password");
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			if (con == null) {
 				con = DriverManager.getConnection(databaseUrl, userName, password);
 			} else {

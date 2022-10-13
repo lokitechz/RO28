@@ -8,6 +8,8 @@ FROM
     `Department`
 ORDER BY DepartmentID;
 
+SELECT DAY(NOW());
+
 -- Câu 3: Lấy ra ID của phòng ban "Sale"
 SELECT 
     DepartmentID
@@ -27,6 +29,11 @@ ORDER BY AccountID;
 -- Câu 5: Lấy ra thông tin account có full name dài nhất và thuộc phòng ban có id = 3
 -- B1: Lọc những Account thuộc phòng ban số 3
 -- CTE = Common table expression (Không thể đi riêng)
+SELECT * FROM `Account` 
+WHERE DepartmentID = 3 AND Fullname = (
+	SELECT MAX(LENGTH(Fullname)) FROM `Account` WHERE DepartmentID = 3
+);
+
 WITH CTE_DEP3 AS (
 	SELECT * FROM `Account` WHERE DepartmentID = 3
 )
