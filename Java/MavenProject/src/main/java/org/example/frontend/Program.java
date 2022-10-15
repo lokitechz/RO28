@@ -39,12 +39,15 @@ public class Program {
 				// Chỉnh sửa thông tin của account dựa vào ID
 				case 3:
 					System.out.print("Mời bạn nhập vào accountId muốn chỉnh sửa: ");
-					int accountId = ScannerUtils.inputInt();
-					controller.updateAccount(accountId);
+					int accountIdUpdate = ScannerUtils.inputInt();
+					controller.updateAccount(accountIdUpdate);
 					break;
 
 				// Xoá 1 account dựa vào ID
 				case 4:
+					System.out.print("Mời bạn nhập vào accountId muốn xoá: ");
+					int accountIdDelete = ScannerUtils.inputInt();
+					controller.deleteAccount(accountIdDelete);
 					break;
 
 				case 5:

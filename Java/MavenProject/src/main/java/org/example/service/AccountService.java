@@ -17,4 +17,5 @@ public interface AccountService {
 
 	void updateAccount(int accountId) throws SQLException;
 
+	void deleteAccount(int accountId) throws SQLException;
 }

@@ -61,4 +61,16 @@ public class AccountServiceImpl implements AccountService {
 		}
 	}
 
+	@Override
+	public void deleteAccount(int accountId) throws SQLException {
+		// Tìm kiếm thông tin account trong database
+		Account account = accountRepository.getAccountByID(accountId);
+		if (account.getAccountId() == null) {
+			throw new RuntimeException("Không tìm thấy thông tin account bạn muốn xóa");
+		} else {
+			accountRepository.deleteAccount(accountId);
+			System.out.println("Xoá dữ liệu có accountId = " + account.getAccountId() + " thành công");
+		}
+	}
+
 }

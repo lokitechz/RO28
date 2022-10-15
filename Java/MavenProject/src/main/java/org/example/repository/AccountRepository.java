@@ -98,4 +98,10 @@ public class AccountRepository {
 		ps.executeUpdate();
 	}
 
+	public void deleteAccount(int accountId) throws SQLException {
+		String sql = "DELETE FROM `Account` WHERE AccountID = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, accountId);
+		ps.executeUpdate();
+	}
 }

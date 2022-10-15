@@ -42,4 +42,12 @@ public class AccountController {
 		}
 	}
 
+	public void deleteAccount(int accountId) {
+		try {
+			accountService.deleteAccount(accountId);
+		} catch (RuntimeException | SQLException e) {
+			System.out.println("Chỉnh sửa account không thành công! " + e.getMessage());
+		}
+	}
+
 }
