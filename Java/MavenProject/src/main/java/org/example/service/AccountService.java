@@ -15,4 +15,6 @@ public interface AccountService {
 
 	Account createAccount(Account request) throws SQLException;
 
+	Account updateAccount(Account request) throws SQLException;
+
 }

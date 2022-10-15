@@ -11,48 +11,12 @@ public class ScannerUtils {
 
 	private static Scanner sc = new Scanner(System.in);
 
-	// Trả về giá trị số khi người dùng nhập vào
-	public static int inputInt() {
+	public static Integer inputInt() {
 		while (true) {
 			try {
-				return Integer.parseInt(String.valueOf(sc.nextInt()));
+				return Integer.parseInt(sc.nextLine());
 			} catch (Exception e) {
-				System.err.println("Dữ liệu ban nhập vào không phải là số đúng mời nhập lại:");
-			}
-		}
-	}
-
-	public static int inputIntPositive() {
-		while (true) {
-			try {
-				int intPositive = Integer.parseInt(sc.next());
-				if (intPositive >= 0) {
-					return intPositive;
-				} else {
-					System.err.println("Dữ liệu ban nhập vào không đúng mời nhập lại:");
-				}
-			} catch (Exception e) {
-				System.err.println("Dữ liệu ban nhập vào không đúng mời nhập lại:");
-			}
-		}
-	}
-
-	public static Float inputFloat() {
-		while (true) {
-			try {
-				return Float.parseFloat(sc.next());
-			} catch (Exception e) {
-				System.err.println("Dữ liệu ban nhập vào không đúng mời nhập lại:");
-			}
-		}
-	}
-
-	public static Double inputDouble() {
-		while (true) {
-			try {
-				return Double.parseDouble(sc.next());
-			} catch (Exception e) {
-				System.err.println("Dữ liệu ban nhập vào không đúng mời nhập lại:");
+				System.err.print("Dữ liệu bạn nhập vào không phải là số mời nhập lại: ");
 			}
 		}
 	}
@@ -63,7 +27,7 @@ public class ScannerUtils {
 			if (!string.isEmpty()) {
 				return string;
 			} else {
-				System.err.println("Dữ liệu ban nhập vào không đúng mời nhập lại:");
+				System.err.println("Dữ liệu ban nhập vào không phải là chuỗi mời nhập lại:");
 			}
 		}
 	}

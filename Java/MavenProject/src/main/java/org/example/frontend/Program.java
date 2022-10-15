@@ -23,30 +23,38 @@ public class Program {
 			switch (choice) {
 				// Hiển thị danh sách nhân viên
 				case 1:
+					System.out.println("====== Danh sách account =====");
 					List<Account> accounts = controller.getAccounts();
 					for (Account account : accounts) {
 						System.out.println(account);
 					}
 					break;
 
-				// Tìm kiếm theo tên
+				// Thêm mới account
 				case 2:
 					Account request = new Account();
+					System.out.print("Nhập vào email: ");
 					request.setEmail(ScannerUtils.inputString());
+					System.out.print("Nhập vào username: ");
 					request.setUserName(ScannerUtils.inputString());
+					System.out.print("Nhập vào fullname: ");
 					request.setFullName(ScannerUtils.inputString());
+					System.out.print("Nhập vào ID phòng ban: ");
 					request.setDepartmentId(ScannerUtils.inputInt());
+					System.out.print("Nhập vào ID vị trí: ");
 					request.setPositionId(ScannerUtils.inputInt());
 					request.setCreateDate(new Date(System.currentTimeMillis()));
 					Account account = controller.createAccount(request);
-					System.out.println(account);
+					if (account.getAccountId() != null) {
+						System.out.println(account);
+					}
 					break;
 
-				// Hiển thị danh sách nhân viên
+				// Chỉnh sửa thông tin của account dựa vào ID
 				case 3:
 					break;
 
-				// Xoá theo tên
+				// Xoá 1 account dựa vào ID
 				case 4:
 					break;
 

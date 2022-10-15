@@ -31,7 +31,17 @@ public class AccountController {
 		try {
 			account = accountService.createAccount(request);
 		} catch (RuntimeException | SQLException e) {
-			System.out.println("Tạo mới account không thành công " + e.getMessage());
+			System.out.println("Tạo mới account không thành công! " + e.getMessage());
+		}
+		return account;
+	}
+
+	public Account updateAccount(Account request) {
+		Account account = new Account();
+		try {
+			account = accountService.createAccount(request);
+		} catch (RuntimeException | SQLException e) {
+			System.out.println("Tạo mới account không thành công! " + e.getMessage());
 		}
 		return account;
 	}
