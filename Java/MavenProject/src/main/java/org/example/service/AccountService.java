@@ -13,8 +13,8 @@ public interface AccountService {
 
 	List<Account> getAccounts() throws SQLException;
 
-	Account createAccount(Account request) throws SQLException;
+	void createAccount(Account request) throws SQLException;
 
-	Account updateAccount(Account request) throws SQLException;
+	void updateAccount(int accountId) throws SQLException;
 
 }

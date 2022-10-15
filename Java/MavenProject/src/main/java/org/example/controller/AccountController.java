@@ -26,24 +26,20 @@ public class AccountController {
 		return accounts;
 	}
 
-	public Account createAccount(Account request) {
-		Account account = new Account();
+	public void createAccount(Account request) {
 		try {
-			account = accountService.createAccount(request);
+			accountService.createAccount(request);
 		} catch (RuntimeException | SQLException e) {
 			System.out.println("Tạo mới account không thành công! " + e.getMessage());
 		}
-		return account;
 	}
 
-	public Account updateAccount(Account request) {
-		Account account = new Account();
+	public void updateAccount(int accountId) {
 		try {
-			account = accountService.createAccount(request);
+			accountService.updateAccount(accountId);
 		} catch (RuntimeException | SQLException e) {
-			System.out.println("Tạo mới account không thành công! " + e.getMessage());
+			System.out.println("Chỉnh sửa account không thành công! " + e.getMessage());
 		}
-		return account;
 	}
 
 }

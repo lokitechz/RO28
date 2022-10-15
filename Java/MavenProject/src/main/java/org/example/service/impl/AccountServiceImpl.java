@@ -3,6 +3,7 @@ package org.example.service.impl;
 import org.example.entity.Account;
 import org.example.repository.AccountRepository;
 import org.example.service.AccountService;
+import org.example.utils.Utils;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -38,16 +39,26 @@ public class AccountServiceImpl implements AccountService {
 	 * @throws SQLException - Lỗi xảy ra trong quá trình lưu dữ liệu vào database
 	 */
 	@Override
-	public Account createAccount(Account request) throws SQLException {
-		if (!request.getEmail().contains("@")) {
-			throw new RuntimeException("Email không đúng định dạng");
+	public void createAccount(Account request) throws SQLException {
+		String result = Utils.validateAccountData(request);
+		if (result != null) {
+			throw new RuntimeException(result);
 		}
-		return accountRepository.createAccount(request);
+		accountRepository.createAccount(request);
 	}
 
 	@Override
-	public Account updateAccount(Account request) throws SQLException {
-		return null;
+	public void updateAccount(int accountId) throws SQLException {
+		// Tìm kiếm thông tin account trong database
+		Account account = accountRepository.getAccountByID(accountId);
+		if (account.getAccountId() == null) {
+			throw new RuntimeException("Không tìm thấy thông tin account bạn muốn chỉnh sửa");
+		} else {
+			Account request = Utils.inputAccountInfo();
+			request.setAccountId(accountId);
+			accountRepository.updateAccount(request);
+			System.out.println("Chỉnh sửa dữ liệu của bản ghi có accountId = " + account.getAccountId() + " thành công");
+		}
 	}
 
 }
