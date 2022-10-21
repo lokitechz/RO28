@@ -1,0 +1,43 @@
+package vn.com.vti.repository;
+
+import vn.com.vti.entity.Department;
+import vn.com.vti.utils.DatabaseUtils;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+public class DepartmentRepository {
+
+	// Khai báo đối tượng Connection để kết nối đến CSDL
+	private final Connection con = DatabaseUtils.getInstance().getDatabaseConnection();
+
+	/**
+	 * Tương tác với database trả về danh sách Account
+	 *
+	 * @return List<Department> - Danh sách phòng ban
+	 * @throws SQLException - Lỗi
+	 */
+	public List<Department> getListDepartment() throws SQLException {
+		List<Department> departments = new ArrayList<>();
+		// Khai báo câu lệnh SQL muốn thực thi
+		String sql = "SELECT * FROM `Department` ORDER BY `DepartmentID`";
+		// B2: Khai báo đối tượng Statement tạo 1 câu lệnh gửi đến CSDL
+		Statement st = con.createStatement();
+		// B3: Khai báo đối tượng để nhận về kết quả thực thi của câu SQL
+		ResultSet rs = st.executeQuery(sql);
+		con.commit();
+		// B4: Xử lý kết quả trả về
+		while (rs.next()) {
+			Department department = new Department();
+			department.setDepartmentId(rs.getInt(1));
+			department.setDepartmentName(rs.getString(2));
+			departments.add(department);
+		}
+		return departments;
+	}
+
+}
