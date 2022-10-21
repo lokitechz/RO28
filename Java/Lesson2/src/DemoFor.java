@@ -1,4 +1,4 @@
-public class SampleFor {
+public class DemoFor {
 
 	public static void main(String[] args) {
 		// Biết trước số lần lặp

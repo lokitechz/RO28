@@ -1,4 +1,4 @@
-public class SampleConvertWrapper {
+public class DemoConvertWrapper {
 
 	public static void main(String[] args) {
 		int i = 5;

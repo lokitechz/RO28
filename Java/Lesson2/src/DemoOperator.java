@@ -1,4 +1,4 @@
-public class SampleOperator {
+public class DemoOperator {
 
 	public static void main(String[] args) {
 		int x = 5;

@@ -1,4 +1,4 @@
-public class SampleTypeCasting {
+public class DemoTypeCasting {
 
 	public static void main(String[] args) {
 		int myInt = 9;

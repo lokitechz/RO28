@@ -1,4 +1,4 @@
-public class SampleSwitchCase {
+public class DemoSwitchCase {
 
 	public static void main(String[] args) {
 		int i = 1;
