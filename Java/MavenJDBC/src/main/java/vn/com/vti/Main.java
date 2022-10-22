@@ -30,14 +30,21 @@ public class Main {
 
 				case 2:
 					System.out.print("Mời bạn nhập vào tên phòng bạn: ");
-					Department department = new Department();
+					Department requestCreate = new Department();
 					String departmentName = ScannerUtils.inputString();
-					department.setDepartmentName(departmentName);
-					controller.creteDepartment(department);
+					requestCreate.setDepartmentName(departmentName);
+					controller.creteDepartment(requestCreate);
 					break;
 
-				// Chỉnh sửa thông tin của account dựa vào ID
 				case 3:
+					System.out.print("Mời bạn nhập vào ID phòng ban muốn chỉnh sửa: ");
+					int departmentId = ScannerUtils.inputInt();
+					System.out.print("Mời bạn nhập vào tên mới của phòng ban: ");
+					String newDepartmentName = ScannerUtils.inputString();
+					Department requestUpdate = new Department();
+					requestUpdate.setDepartmentId(departmentId);
+					requestUpdate.setDepartmentName(newDepartmentName);
+					controller.updateDepartment(requestUpdate);
 					break;
 
 				// Xoá 1 account dựa vào ID

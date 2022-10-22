@@ -46,4 +46,14 @@ public class DepartmentRepository {
 		return result;
 	}
 
+	public int updateDepartment(Department request) throws SQLException {
+		String sql = "UPDATE `Department` SET `DepartmentName` = ? WHERE `DepartmentId` = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, request.getDepartmentName());
+		ps.setInt(2, request.getDepartmentId());
+		int result = ps.executeUpdate();
+		con.commit();
+		return result;
+	}
+
 }

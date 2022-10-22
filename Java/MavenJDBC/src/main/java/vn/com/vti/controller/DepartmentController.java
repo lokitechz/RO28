@@ -36,7 +36,15 @@ public class DepartmentController {
 		try {
 			departmentService.creteDepartment(request);
 		} catch (RuntimeException | SQLException e) {
-			System.out.println("Tạo mới account không thành công! " + e.getMessage());
+			System.out.println("Tạo mới phòng ban không thành công! " + e.getMessage());
+		}
+	}
+
+	public void updateDepartment(Department request) {
+		try {
+			departmentService.updateDepartment(request);
+		} catch (SQLException e) {
+			System.out.println("Chỉnh sửa phòng không thành công! " + e.getMessage());
 		}
 	}
 

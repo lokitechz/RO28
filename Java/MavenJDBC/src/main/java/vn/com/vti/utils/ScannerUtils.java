@@ -27,7 +27,7 @@ public class ScannerUtils {
 			if (!string.isEmpty()) {
 				return string;
 			} else {
-				System.err.println("Dữ liệu ban nhập vào không phải là chuỗi mời nhập lại:");
+				System.err.print("Dữ liệu ban nhập vào không phải là chuỗi mời nhập lại: ");
 			}
 		}
 	}

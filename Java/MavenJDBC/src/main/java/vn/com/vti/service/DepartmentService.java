@@ -11,4 +11,6 @@ public interface DepartmentService {
 
 	void creteDepartment(Department request) throws SQLException;
 
+	void updateDepartment(Department request) throws SQLException;
+
 }
