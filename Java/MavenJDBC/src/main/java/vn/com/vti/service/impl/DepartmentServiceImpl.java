@@ -20,4 +20,14 @@ public class DepartmentServiceImpl implements DepartmentService {
 		return departmentRepository.getListDepartment();
 	}
 
+	@Override
+	public void creteDepartment(Department request) throws SQLException {
+		int result = departmentRepository.creteDepartment(request);
+		if (result > 0) {
+			System.out.println("Thêm mới dữ liệu thành công");
+		} else {
+			System.out.println("Thêm mới thất bại");
+		}
+	}
+
 }

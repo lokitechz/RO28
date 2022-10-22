@@ -20,17 +20,20 @@ public class Main {
 			// Lưu chữ sự lựa chọn
 			int choice = ScannerUtils.inputInt();
 			switch (choice) {
-				// Hiển thị danh sách nhân viên
 				case 1:
-					System.out.println("====== Danh sách phòng ban =====");
+					System.out.println("========== Danh sách phòng ban ==========");
 					List<Department> departments = controller.getListDepartment();
 					for (Department department : departments) {
 						System.out.println(department);
 					}
 					break;
 
-				// Thêm mới account
 				case 2:
+					System.out.print("Mời bạn nhập vào tên phòng bạn: ");
+					Department department = new Department();
+					String departmentName = ScannerUtils.inputString();
+					department.setDepartmentName(departmentName);
+					controller.creteDepartment(department);
 					break;
 
 				// Chỉnh sửa thông tin của account dựa vào ID

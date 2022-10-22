@@ -9,4 +9,6 @@ public interface DepartmentService {
 
 	List<Department> getListDepartment() throws SQLException;
 
+	void creteDepartment(Department request) throws SQLException;
+
 }

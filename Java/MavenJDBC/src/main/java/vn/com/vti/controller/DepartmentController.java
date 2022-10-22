@@ -15,6 +15,13 @@ public class DepartmentController {
 		this.departmentService = departmentService;
 	}
 
+	/**
+	 * Description -
+	 *
+	 * @return List<Department> - Danh sách phòng ban
+	 * @author - giangdh
+	 * @created - 22/10/2022
+	 */
 	public List<Department> getListDepartment() {
 		List<Department> departments = new ArrayList<>();
 		try {
@@ -23,6 +30,14 @@ public class DepartmentController {
 			System.out.println("Lấy danh sách account không thành công " + e.getMessage());
 		}
 		return departments;
+	}
+
+	public void creteDepartment(Department request) {
+		try {
+			departmentService.creteDepartment(request);
+		} catch (RuntimeException | SQLException e) {
+			System.out.println("Tạo mới account không thành công! " + e.getMessage());
+		}
 	}
 
 }
