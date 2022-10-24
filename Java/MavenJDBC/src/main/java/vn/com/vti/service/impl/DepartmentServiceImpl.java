@@ -37,9 +37,24 @@ public class DepartmentServiceImpl implements DepartmentService {
 		if (resultValidate.isEmpty()) {
 			int result = departmentRepository.updateDepartment(request);
 			if (result > 0) {
-				System.out.println("Thêm mới dữ liệu thành công");
+				System.out.println("Chỉnh sửa dữ liệu thành công");
 			} else {
-				System.err.println("Không tìm thấy thông tin bản ghi bạn muốn chỉnh sửa");
+				throw new RuntimeException("Không tìm thấy thông tin bản ghi với ID bạn vừa nhập vào");
+			}
+		} else {
+			throw new RuntimeException(resultValidate);
+		}
+	}
+
+	@Override
+	public void deleteDepartment(Department request) throws SQLException {
+		String resultValidate = Utils.validateDepartment("delete", request);
+		if (resultValidate.isEmpty()) {
+			int result = departmentRepository.deleteDepartment(request);
+			if (result > 0) {
+				System.out.println("Xoá dữ liệu thành công");
+			} else {
+				throw new RuntimeException("Không tìm thấy thông tin bản ghi với ID bạn vừa nhập vào");
 			}
 		} else {
 			throw new RuntimeException(resultValidate);

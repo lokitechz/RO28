@@ -56,4 +56,13 @@ public class DepartmentRepository {
 		return result;
 	}
 
+	public int deleteDepartment(Department request) throws SQLException {
+		String sql = "DELETE FROM `Department` WHERE `DepartmentId` = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, request.getDepartmentId());
+		int result = ps.executeUpdate();
+		con.commit();
+		return result;
+	}
+
 }

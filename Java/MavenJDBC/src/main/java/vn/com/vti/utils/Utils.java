@@ -12,11 +12,15 @@ public class Utils {
 			}
 		} else if (action.equalsIgnoreCase("update")) {
 			if (department.getDepartmentId() == null) {
-				return "Không tìm thấy phòng ban với ID này";
+				return "Mã phòng ban không được bỏ trống";
 			} else {
 				if (StringUtils.isBlank(department.getDepartmentName())) {
 					return "Tên phòng ban không dược để trống";
 				}
+			}
+		} else if (action.equalsIgnoreCase("delete")) {
+			if (department.getDepartmentId() == null) {
+				return "Mã phòng ban không được bỏ trống";
 			}
 		}
 		return StringUtils.EMPTY;

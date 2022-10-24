@@ -13,4 +13,6 @@ public interface DepartmentService {
 
 	void updateDepartment(Department request) throws SQLException;
 
+	void deleteDepartment(Department request) throws SQLException;
+
 }

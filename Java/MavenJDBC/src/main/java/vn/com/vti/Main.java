@@ -38,17 +38,21 @@ public class Main {
 
 				case 3:
 					System.out.print("Mời bạn nhập vào ID phòng ban muốn chỉnh sửa: ");
-					int departmentId = ScannerUtils.inputInt();
+					int idUpdate = ScannerUtils.inputInt();
 					System.out.print("Mời bạn nhập vào tên mới của phòng ban: ");
 					String newDepartmentName = ScannerUtils.inputString();
 					Department requestUpdate = new Department();
-					requestUpdate.setDepartmentId(departmentId);
+					requestUpdate.setDepartmentId(idUpdate);
 					requestUpdate.setDepartmentName(newDepartmentName);
 					controller.updateDepartment(requestUpdate);
 					break;
 
-				// Xoá 1 account dựa vào ID
 				case 4:
+					System.out.print("Mời bạn nhập vào ID phòng ban muốn chỉnh sửa: ");
+					int idDelete = ScannerUtils.inputInt();
+					Department requestDelete = new Department();
+					requestDelete.setDepartmentId(idDelete);
+					controller.deleteDepartment(requestDelete);
 					break;
 
 				case 5:
