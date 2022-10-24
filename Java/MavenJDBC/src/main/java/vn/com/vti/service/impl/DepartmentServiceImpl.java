@@ -33,31 +33,31 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	@Override
 	public void updateDepartment(Department request) throws SQLException {
-		String resultValidate = Utils.validateDepartment("update", request);
-		if (resultValidate.isEmpty()) {
+		boolean resultValidate = Utils.validateDepartment("update", request);
+		if (resultValidate) {
 			int result = departmentRepository.updateDepartment(request);
 			if (result > 0) {
 				System.out.println("Chỉnh sửa dữ liệu thành công");
 			} else {
-				throw new RuntimeException("Không tìm thấy thông tin bản ghi với ID bạn vừa nhập vào");
+				throw new RuntimeException("Không tìm thấy thông tin phòng ban với ID vừa nhập");
 			}
 		} else {
-			throw new RuntimeException(resultValidate);
+			throw new RuntimeException("Dữ liệu nhập vào không đúng vui lòng kiểm tra lại");
 		}
 	}
 
 	@Override
 	public void deleteDepartment(Department request) throws SQLException {
-		String resultValidate = Utils.validateDepartment("delete", request);
-		if (resultValidate.isEmpty()) {
+		boolean resultValidate = Utils.validateDepartment("delete", request);
+		if (resultValidate) {
 			int result = departmentRepository.deleteDepartment(request);
 			if (result > 0) {
 				System.out.println("Xoá dữ liệu thành công");
 			} else {
-				throw new RuntimeException("Không tìm thấy thông tin bản ghi với ID bạn vừa nhập vào");
+				throw new RuntimeException("Không tìm thấy thông tin phòng ban với ID vừa nhập");
 			}
 		} else {
-			throw new RuntimeException(resultValidate);
+			throw new RuntimeException("Dữ liệu nhập vào không đúng vui lòng kiểm tra lại");
 		}
 	}
 

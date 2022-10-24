@@ -5,25 +5,19 @@ import vn.com.vti.entity.Department;
 
 public class Utils {
 
-	public static String validateDepartment(String action, Department department) {
+	public static boolean validateDepartment(String action, Department department) {
 		if (action.equalsIgnoreCase("add")) {
-			if (StringUtils.isBlank(department.getDepartmentName())) {
-				return "Tên phòng ban không dược để trống";
-			}
+			return !StringUtils.isBlank(department.getDepartmentName());
 		} else if (action.equalsIgnoreCase("update")) {
 			if (department.getDepartmentId() == null) {
-				return "Mã phòng ban không được bỏ trống";
+				return false;
 			} else {
-				if (StringUtils.isBlank(department.getDepartmentName())) {
-					return "Tên phòng ban không dược để trống";
-				}
+				return !StringUtils.isBlank(department.getDepartmentName());
 			}
 		} else if (action.equalsIgnoreCase("delete")) {
-			if (department.getDepartmentId() == null) {
-				return "Mã phòng ban không được bỏ trống";
-			}
+			return department.getDepartmentId() != null;
 		}
-		return StringUtils.EMPTY;
+		return true;
 	}
 
 }

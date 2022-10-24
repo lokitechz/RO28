@@ -35,7 +35,7 @@ public class DepartmentController {
 		try {
 			departmentService.creteDepartment(request);
 		} catch (Exception e) {
-			System.err.println("Tạo mới phòng ban không thành công! " + e.getMessage());
+			System.out.println("Tạo mới phòng ban không thành công! " + e.getMessage());
 		}
 	}
 
@@ -43,7 +43,7 @@ public class DepartmentController {
 		try {
 			departmentService.updateDepartment(request);
 		} catch (Exception e) {
-			System.err.println("Chỉnh sửa phòng không thành công! " + e.getMessage());
+			System.out.println("Chỉnh sửa phòng không thành công! " + e.getMessage());
 		}
 	}
 
@@ -51,7 +51,7 @@ public class DepartmentController {
 		try {
 			departmentService.deleteDepartment(request);
 		} catch (Exception e) {
-			System.err.println("Xoá phòng không thành công! " + e.getMessage());
+			System.out.println("Xoá phòng không thành công! " + e.getMessage());
 		}
 	}
 
