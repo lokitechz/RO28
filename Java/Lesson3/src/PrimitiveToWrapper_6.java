@@ -1,4 +1,4 @@
-public class DemoConvertWrapper {
+public class PrimitiveToWrapper_6 {
 
 	public static void main(String[] args) {
 		int i = 5;
