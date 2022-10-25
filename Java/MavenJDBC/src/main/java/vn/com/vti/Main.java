@@ -15,10 +15,10 @@ public class Main {
 		DepartmentServiceImpl service = new DepartmentServiceImpl(repository);
 		DepartmentController controller = new DepartmentController(service);
 		boolean exit = false;
+		int choice = ScannerUtils.inputInt();
 		do {
 			showMenu();
 			// Lưu chữ sự lựa chọn
-			int choice = ScannerUtils.inputInt();
 			switch (choice) {
 				case 1:
 					System.out.println("========== Danh sách phòng ban ==========");
@@ -56,7 +56,6 @@ public class Main {
 					break;
 
 				case 5:
-					// Gán trạng thái của trương chình là thoát
 					exit = true;
 					break;
 
@@ -73,6 +72,7 @@ public class Main {
 		System.out.println("2.Thêm mới phòng ban");
 		System.out.println("3.Chỉnh sửa thông tin phòng ban");
 		System.out.println("4.Xoá phòng ban");
+		System.out.println("5.Thoát chương trình");
 		System.out.println("+---------------------------------------------------+");
 		System.out.print("Hãy nhập vào sự lựa chọn của bạn: ");
 	}

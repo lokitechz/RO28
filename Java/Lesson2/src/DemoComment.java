@@ -3,8 +3,8 @@
  */
 public class DemoComment {
 
-	// Đây là hàm main
 	public static void main(String[] args) {
+		// In ra thông tin
 		System.out.println("Comment");
 	}
 

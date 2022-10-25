@@ -5,6 +5,11 @@ public class DemoMethod {
 		System.out.println(c);
 	}
 
+	/**
+	 * @param a số thứ nhất
+	 * @param b số thứ hai
+	 * @return Tổng 2 số
+	 */
 	static int sum(int a, int b) {
 		return a + b;
 	}
