@@ -9,6 +9,7 @@ public class WrapperClass_3 {
 		Float f = 0F;
 		Character c = '\0';
 		String string = null;
+		Boolean boo = false;
 		System.out.println("Init byte value " + b);
 		System.out.println("Init short value " + s);
 		System.out.println("Init int value " + i);

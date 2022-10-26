@@ -8,6 +8,7 @@ public class PrimitiveData_2 {
 		double d = 0;
 		float f = 0;
 		char c = '0';
+		boolean boo = false;
 		System.out.println("Init byte value " + b);
 		System.out.println("Init short value " + s);
 		System.out.println("Init int value " + i);
