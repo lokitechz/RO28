@@ -14,7 +14,7 @@ public class Overloading {
 	}
 
 	private static void sum(int a, int b, int c) {
-		System.out.println("Tổng 2 số là: " + (a + b + c));
+		System.out.println("Tổng 3 số là: " + (a + b + c));
 	}
 
 	private static void sum(float a, int b) {
