@@ -1,22 +1,20 @@
-import abstractsample.Cat;
-
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.println("Abstraction using abstract class");
-//		Dog dog = new Dog();
-//		dog.speak();
+//		MyNew application = new MyNew();
+//		application.question1();
+		int index = 3;
+		try {
+			int value = printArrayValue(index);
+			System.out.println(value);
+		} catch (RuntimeException e) {
+			System.out.println("Giá trị của bạn k tồn tại");
+		}
+	}
 
-		Cat cat = new Cat();
-		cat.setVoice("Meow");
-		cat.speak();
-
-//		System.out.println("Abstraction using interface");
-//		interfacesample.Dog dog1 = new interfacesample.Dog();
-//		dog1.speak();
-//
-//		interfacesample.Cat cat1 = new interfacesample.Cat();
-//		cat1.speak();
+	private static int printArrayValue(int index) throws RuntimeException {
+		int[] numbers = {1, 2, 3};
+		return numbers[index];
 	}
 
 }
