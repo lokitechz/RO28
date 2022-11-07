@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -17,6 +19,20 @@ public class ReadFile {
 		method1();
 		method2();
 		method3();
+		method4();
+	}
+
+	private static void method4() {
+		try {
+			File file = new File(PATH);
+			FileInputStream fis = new FileInputStream(file);
+			int content;
+			while ((content = fis.read()) != -1) {
+				System.out.println((char) content);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	// Using Files
