@@ -8,17 +8,17 @@ import vn.com.vti.utils.ScannerUtils;
 
 import java.util.List;
 
-public class Main {
+public class Application {
 
 	public static void main(String[] args) {
 		DepartmentRepository repository = new DepartmentRepository();
 		DepartmentServiceImpl service = new DepartmentServiceImpl(repository);
 		DepartmentController controller = new DepartmentController(service);
 		boolean exit = false;
-		int choice = ScannerUtils.inputInt();
 		do {
 			showMenu();
 			// Lưu chữ sự lựa chọn
+			int choice = ScannerUtils.inputInt();
 			switch (choice) {
 				case 1:
 					System.out.println("========== Danh sách phòng ban ==========");

@@ -25,6 +25,7 @@ public class DepartmentRepository {
 		// B2: Khai báo đối tượng Statement tạo 1 câu lệnh gửi đến CSDL
 		Statement st = con.createStatement();
 		// B3: Khai báo đối tượng để nhận về kết quả thực thi của câu SQL
+		// Và trả về danh sách đối tượng trong
 		ResultSet rs = st.executeQuery(sql);
 		con.commit();
 		// B4: Xử lý kết quả trả về
