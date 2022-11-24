@@ -123,11 +123,7 @@
 
                 <!-- Search section -->
                 <div class="header-with-search">
-
-                    <label for="mobile-search-checkbox" class="header__mobile-search">
-                        <i class="header__mobile-search-icon fas fa-search"></i>
-                    </label>
-
+                    <!-- Logo -->
                     <div class="header__logo hide-on-tablet">
                         <a href="/" class="header__logo-link">
                             <svg class="header__logo-img" viewBox="0 0 192 65">
@@ -137,13 +133,11 @@
                             </svg>
                         </a>
                     </div>
-
-                    <input type="checkbox" hidden="" id="mobile-search-checkbox" class="header__search-checkbox">
-
+                    <!-- Search box -->
                     <div class="header__search">
                         <div class="header__search-input-wrap">
+                            <!-- Search input -->
                             <input type="text" class="header__search-input" placeholder="Nhập để tìm kiếm sản phẩm">
-
                             <!-- Search history -->
                             <div class="header__search-history">
                                 <h3 class="header__search-history-heading">Lịch sử tìm kiếm</h3>
@@ -157,6 +151,7 @@
                                 </ul>
                             </div>
                         </div>
+                        <!-- Option search -->
                         <div class="header__search-select">
                             <span class="header__search-select-label">Trong shop</span>
                             <i class="header__search-select-icon fas fa-angle-down"></i>
@@ -188,7 +183,7 @@
                                 <ul class="header__cart-list-item">
                                     <!-- Cart item -->
                                     <li class="header__cart-item">
-                                        <img class="header__cart-img" src="./assets/img/products/iphone11.png" alt="" >
+                                        <img class="header__cart-img" src="./assets/img/products/iphone11.png" alt="">
                                         <div class="header__cart-item-info">
                                             <div class="header__cart-item-head">
                                                 <h5 class="header__cart-item-name">Iphone 11 64GB VNA</h5>
@@ -240,7 +235,7 @@
                                     </li>
                                 </ul>
 
-                                <a href="#" class="header__cart-view-cart btn btn--primary">Xem giỏ hàng</a>
+                                <a href="/" class="header__cart-view-cart btn btn--primary">Xem giỏ hàng</a>
                             </div>
                         </div>
                     </div>
@@ -249,8 +244,29 @@
         </header>
 
         <!-- Hiển thị nội dung chính  -->
-        <div class="container">
-
+        <div class="app__container">
+            <div class="grid wide">
+                <div class="row sm-gutter app__content">
+                    <div class="col l-2 m-0 c-0">
+                        <!-- Danh mục bên trái -->
+                        <nav class="category">
+                            <h3 class="category__heading">Danh mục</h3>
+                            <ul class="category-list">
+                                <li class="category-item category-item--active">
+                                    <a href="#" class="category-item__link">Điện thoại</a>
+                                </li>
+                                <li class="category-item">
+                                    <a href="#" class="category-item__link">Thiết bị điện tử</a>
+                                </li>
+                                <li class="category-item">
+                                    <a href="#" class="category-item__link">Máy tính & Laptop</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <!-- Nội dung bên phải -->
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Hiển thị chân trang -->
