@@ -1,4 +1,4 @@
-package vn.com.vti.utils;
+package vn.com.vti.util;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;

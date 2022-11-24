@@ -1,7 +1,7 @@
 package vn.com.vti.repository;
 
 import vn.com.vti.entity.Department;
-import vn.com.vti.utils.DatabaseUtils;
+import vn.com.vti.util.DatabaseUtils;
 
 import java.sql.*;
 import java.util.ArrayList;

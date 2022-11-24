@@ -3,8 +3,9 @@ package vn.com.vti.service.impl;
 import vn.com.vti.entity.Department;
 import vn.com.vti.repository.DepartmentRepository;
 import vn.com.vti.service.DepartmentService;
-import vn.com.vti.utils.Utils;
+import vn.com.vti.util.Utils;
 
+import javax.rmi.CORBA.Util;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -23,11 +24,16 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	@Override
 	public void creteDepartment(Department request) throws SQLException {
-		int result = departmentRepository.creteDepartment(request);
-		if (result > 0) {
-			System.out.println("Thêm mới dữ liệu thành công");
+		boolean isValidEmail = Utils.validateEmail(request.getDepartmentName());
+		if (isValidEmail) {
+			int result = departmentRepository.creteDepartment(request);
+			if (result > 0) {
+				System.out.println("Thêm mới dữ liệu thành công");
+			} else {
+				System.out.println("Thêm mới thất bại");
+			}
 		} else {
-			System.out.println("Thêm mới thất bại");
+			System.out.println("Tên demo không thoả mãn điều kiện");
 		}
 	}
 

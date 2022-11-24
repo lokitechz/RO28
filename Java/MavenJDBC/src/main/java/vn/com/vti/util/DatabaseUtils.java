@@ -1,4 +1,4 @@
-package vn.com.vti.utils;
+package vn.com.vti.util;
 
 import java.io.IOException;
 import java.nio.file.Files;

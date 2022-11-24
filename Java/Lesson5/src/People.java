@@ -1,2 +1,7 @@
-package PACKAGE_NAME;public class People {
+public class People {
+
+	private int id;
+
+
+
 }

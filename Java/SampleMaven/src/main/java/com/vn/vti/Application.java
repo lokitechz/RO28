@@ -1,10 +1,10 @@
-package vn.com.vti;
+package com.vn.vti;
 
-import vn.com.vti.controller.DepartmentController;
-import vn.com.vti.entity.Department;
-import vn.com.vti.repository.DepartmentRepository;
-import vn.com.vti.service.impl.DepartmentServiceImpl;
-import vn.com.vti.util.ScannerUtils;
+import com.vn.vti.controller.DepartmentController;
+import com.vn.vti.entity.Department;
+import com.vn.vti.repository.DepartmentRepository;
+import com.vn.vti.service.DepartmentServiceImpl;
+import com.vn.vti.util.ScannerUtil;
 
 import java.util.List;
 
@@ -14,11 +14,12 @@ public class Application {
 		DepartmentRepository repository = new DepartmentRepository();
 		DepartmentServiceImpl service = new DepartmentServiceImpl(repository);
 		DepartmentController controller = new DepartmentController(service);
+
 		boolean exit = false;
 		do {
 			showMenu();
 			// Lưu chữ sự lựa chọn
-			int choice = ScannerUtils.inputInt();
+			int choice = ScannerUtil.inputInt();
 			switch (choice) {
 				case 1:
 					System.out.println("========== Danh sách phòng ban ==========");
@@ -29,30 +30,30 @@ public class Application {
 					break;
 
 				case 2:
-					System.out.print("Mời bạn nhập vào tên phòng bạn: ");
-					Department requestCreate = new Department();
-					String departmentName = ScannerUtils.inputString();
-					requestCreate.setDepartmentName(departmentName);
-					controller.creteDepartment(requestCreate);
+//					System.out.print("Mời bạn nhập vào tên phòng bạn: ");
+//					Department requestCreate = new Department();
+//					String departmentName = ScannerUtils.inputString();
+//					requestCreate.setDepartmentName(departmentName);
+//					controller.creteDepartment(requestCreate);
 					break;
 
 				case 3:
-					System.out.print("Mời bạn nhập vào ID phòng ban muốn chỉnh sửa: ");
-					int idUpdate = ScannerUtils.inputInt();
-					System.out.print("Mời bạn nhập vào tên mới của phòng ban: ");
-					String newDepartmentName = ScannerUtils.inputString();
-					Department requestUpdate = new Department();
-					requestUpdate.setDepartmentId(idUpdate);
-					requestUpdate.setDepartmentName(newDepartmentName);
-					controller.updateDepartment(requestUpdate);
+//					System.out.print("Mời bạn nhập vào ID phòng ban muốn chỉnh sửa: ");
+//					int idUpdate = ScannerUtils.inputInt();
+//					System.out.print("Mời bạn nhập vào tên mới của phòng ban: ");
+//					String newDepartmentName = ScannerUtils.inputString();
+//					Department requestUpdate = new Department();
+//					requestUpdate.setDepartmentId(idUpdate);
+//					requestUpdate.setDepartmentName(newDepartmentName);
+//					controller.updateDepartment(requestUpdate);
 					break;
 
 				case 4:
-					System.out.print("Mời bạn nhập vào ID phòng ban muốn chỉnh sửa: ");
-					int idDelete = ScannerUtils.inputInt();
-					Department requestDelete = new Department();
-					requestDelete.setDepartmentId(idDelete);
-					controller.deleteDepartment(requestDelete);
+//					System.out.print("Mời bạn nhập vào ID phòng ban muốn chỉnh sửa: ");
+//					int idDelete = ScannerUtils.inputInt();
+//					Department requestDelete = new Department();
+//					requestDelete.setDepartmentId(idDelete);
+//					controller.deleteDepartment(requestDelete);
 					break;
 
 				case 5:
