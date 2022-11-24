@@ -16,6 +16,7 @@ public class DatabaseUtils {
 	private static DatabaseUtils dbIsntance;
 	private static Connection con;
 
+	// Để tối ứu hoá bộ nhơ
 	public static DatabaseUtils getInstance() {
 		if (dbIsntance == null) {
 			dbIsntance = new DatabaseUtils();
@@ -23,14 +24,7 @@ public class DatabaseUtils {
 		return dbIsntance;
 	}
 
-	public static void closeConnection(Connection conn) {
-		try {
-			conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
+	// Tạo kết nối đến CSDL và trả về 1 đối tượng Connection
 	public Connection getDatabaseConnection() {
 		try {
 			Properties properties = new Properties();
@@ -51,5 +45,14 @@ public class DatabaseUtils {
 		}
 		return con;
 	}
+
+	public static void closeConnection(Connection conn) {
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 
 }

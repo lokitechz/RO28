@@ -20,4 +20,8 @@ public class Utils {
 		return true;
 	}
 
+	public static boolean isDemo(String departmentName) {
+		return !departmentName.equalsIgnoreCase("demo");
+	}
+
 }
