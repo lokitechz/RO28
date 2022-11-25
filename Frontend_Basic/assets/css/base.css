@@ -24,7 +24,7 @@ html {
 }
 
 /* Responsive */
-.grid-row {
+.grid__row {
     display: flex;
     flex-wrap: wrap;
     margin-left: -5px;
@@ -32,19 +32,19 @@ html {
 }
 
 /* Test */
-.grid-column-2 {
+.grid__column-2 {
     padding-left: 5px;
     padding-right: 5px;
     width: 16.6667%;
 }
 
-.grid-column-2-4 {
+.grid__column-2-4 {
     padding-left: 5px;
     padding-right: 5px;
     width: 20%;
 }
 
-.grid-column-10 {
+.grid__column-10 {
     padding-left: 5px;
     padding-right: 5px;
     width: 83.3334%;
@@ -80,14 +80,14 @@ html {
     animation: fadeIn linear 0.1s;
 }
 
-.modal-overlay {
+.modal__overlay {
     position: absolute;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal-body {
+.modal__body {
     --growth-from: 0.7;
     --growth-to: 1;
     margin: auto;
@@ -114,22 +114,22 @@ html {
     line-height: 1.6rem;
 }
 
-.btn.btn-normal:hover {
+.btn.btn--normal:hover {
     background-color: rgba(0, 0, 0, 0.05);
 }
 
-.btn.btn-size-s {
+.btn.btn--size-s {
     height: 32px;
     font-size: 12px;
     padding: 0 8px;
 }
 
-.btn.btn-primary {
+.btn.btn--primary {
     color: var(--white-color);
     background-color: var(--primary-color);
 }
 
-.btn.btn-disabled {
+.btn.btn--disabled {
     color: #949494;
     cursor: default;
     background-color: #c3c3c3;
@@ -148,22 +148,22 @@ html {
     justify-content: space-between;
 }
 
-.select-input-label {
+.select-input__label {
     font-size: 1.4rem;
 }
 
-.select-input-icon {
+.select-input__icon {
     font-size: 1.4rem;
     color: rgb(131, 131, 131);
     position: relative;
     top: 1px;
 }
 
-.select-input:hover .select-input-list {
+.select-input:hover .select-input__list {
     display: block;
 }
 
-.select-input-list {
+.select-input__list {
     position: absolute;
     left: 0;
     right: 0;
@@ -176,7 +176,7 @@ html {
     z-index: 1;
 }
 
-.select-input-link {
+.select-input__link {
     font-size: 1.4rem;
     color: var(--text-color);
     text-decoration: none;
@@ -184,7 +184,7 @@ html {
     padding: 4px 0;
 }
 
-.select-input-link:hover {
+.select-input__link:hover {
     color: var(--primary-color);
 }
 
@@ -200,16 +200,16 @@ html {
     margin: 0 12px;
 }
 
-.pagination-item-active .pagination-item-link {
+.pagination-item--active .pagination-item__link {
     color: var(--white-color);
     background-color: var(--primary-color);
 }
 
-.pagination-item-active .pagination-item-link:hover {
+.pagination-item--active .pagination-item__link:hover {
     background-color: #ed5c3f;
 }
 
-.pagination-item-link {
+.pagination-item__link {
     --height: 30px;
     display: block;
     font-weight: 300;
@@ -221,4 +221,9 @@ html {
     line-height: var(--height);
     text-align: center;
     border-radius: 2px;
+}
+
+strong {
+    font-weight: bold;
+    color: #000;
 }
