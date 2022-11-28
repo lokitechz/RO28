@@ -1,3 +1,4 @@
+/* Chứa những CSS chính của project */
 .app {
     overflow: hidden;
 }
@@ -943,12 +944,12 @@
     color: var(--text-color);
     font-size: 1.5rem;
     font-weight: 400;
-    padding: 16px 20px 0;
+    padding: 16px 16px 0;
     margin-top: 0;
     text-transform: uppercase;
 }
 
-.category-list {
+.category__list {
     padding: 0 0 8px 0;
     list-style: none;
 }
@@ -1291,7 +1292,7 @@ i.home-product-item__like-icon-fill {
     font-size: 1.2rem;
     line-height: 1.2rem;
     position: relative;
-    top: 1px;
+    top: -1px;
 }
 
 .home-product-item__sale-off-label {
@@ -1299,8 +1300,8 @@ i.home-product-item__like-icon-fill {
     font-size: 1.3rem;
     line-height: 1.3rem;
     position: relative;
-    font-weight: 400;
-    top: 3px;
+    top: -2px;
+    font-weight: 600;
 }
 
 .home-product__pagination {
