@@ -949,7 +949,7 @@
     text-transform: uppercase;
 }
 
-.category-list {
+.category__list {
     padding: 0 0 8px 0;
     list-style: none;
 }
@@ -1300,7 +1300,7 @@ i.home-product-item__like-icon-fill {
     font-size: 1.3rem;
     line-height: 1.3rem;
     position: relative;
-    top: -10px;
+    top: -2px;
     font-weight: 600;
 }
 
